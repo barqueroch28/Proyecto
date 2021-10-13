@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Carnes Castillo</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+
+
+  <style>
+
+
+    body{
+
+      
+      background-image: radial-gradient( circle farthest-corner at 50.4% 50.5%,  rgb(0, 0, 0) 0%, rgb(224, 0, 0) 90% );
+      
+
+
+
+
+
+      
+    }
+
+
+      .container {
+        
+        justify-content: center;
+        align-items: center;
+        max-height: 600px;
+        max-width: 850px;
+       
+        }
+
+
+  
+       .bg{
+          background-image: url(./img/bannerlogin.png);
+          background-position: center center;
+        }
+
+        
+
+
+    </style>
+
+</head>
+<body>
+      <div class="container w-75 bg-white mt-5 rounded-3 shadow">
+        <div class="row align-items-stretch">
+          <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded-3">
+          </div> 
+          <div class="col bg-white p-5 rounded-end">
+            <div class="text-end">
+              <img src="./img/logoc.png" width="48" alt="">
+            </div>
+            <h2 class="fw-bold text-center py-3">Bienvenido</h2>
+    
+            <!-- Login -->
+    
+            <form action="#">
+              <div class="mb-4">
+                <label for="email" class="form-label">Correo electronico</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+              <div class="mb-4 form-check">
+                  <input type="checkbox" name="connected" class="form-check-input">
+                  <label for="connected" class="form-chceck-label">Mantenerme conectado</label>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+              </div>
+              <div class="my-3 text-center">
+                <span>No tienes cuenta? <a href="#">Registrate</a></span> <br>
+                <span> <a href="#"> Recuperar password </a></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+</html>
