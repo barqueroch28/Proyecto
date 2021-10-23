@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
-
+    <script>const uri = 'https://localhost:44351/api/InformacionPersonal/Login';</script>
 
 
   <style>
@@ -25,7 +25,7 @@
 
 
 
-      
+
     }
 
 
@@ -64,14 +64,14 @@
     
             <!-- Login -->
     
-            <form action="#">
+            <form action="javascript:void(0);" method="POST" onsubmit="Login()">
               <div class="mb-4">
-                <label for="email" class="form-label">Correo electronico</label>
-                <input type="email" class="form-control" name="email">
+                <label for="cedula" class="form-label">Cédula</label>
+                <input type="text" class="form-control" name="cedula" id="Cedula">
               </div>
               <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password">
+                <input type="password" class="form-control" name="password" id="Contra">
               </div>
               <div class="mb-4 form-check">
                   <input type="checkbox" name="connected" class="form-check-input">
@@ -91,6 +91,31 @@
         </div>
       </div>
 
-
+<script>
+  function Login(){
+    var cedula = document.getElementById('Cedula').value;
+    var contrasena = document.getElementById('Contra').value;
+    const item = {
+      Cedula: cedula.trim(),
+      Contrasena: contrasena.trim()
+    };
+    fetch(uri, {
+      method: 'POST',
+      headers: {
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+    //.then(response => response.json())
+    .then(function(response){
+      if(response.status === '201'){
+        window.location = 'menu.html';
+      }
+    })
+    .then(()=> {cedula=''; contrasena='';})
+    .catch(e =>{console.error('No se pudo iniciar sesion', e)}); 
+  }
+</script>
 </body>
 </html>
