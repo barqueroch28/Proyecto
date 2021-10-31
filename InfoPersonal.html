@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    fieldset{
+        width: fit-content;
+    }  
+    hr{
+        margin: 10px;
+        width: 825px;
+    }
+</style>
+<body>
+    <fieldset>
+        <h3>Informacion Personal</h3>
+        <form action="javascript:void(0);" method="post" onsubmit="BigBoy()">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="Nombre" id="Nombre">
+        <label for="1Apellido">Primer Apellido</label>
+        <input type="text" name="1Apellido" id="1Apellido">
+        <label for="2Apellido">Segundo Apellido</label>
+        <input type="text" name="2Apellido" id="2Apellido">
+        <hr>
+        <label for="Cedula">Cedula</label>
+        <input type="text" name="Cedula" id="Cedula">
+        <label for="FechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" name="FechaNacimiento" id="FechaNacimiento">
+        <label for="EstadoCivil">Estado Civil</label>
+        <input type="text" name="EstadoCivil" id="EstadoCivil">
+        <hr>
+        <label for="NumeroAsegurado">Numero Asegurado</label>
+        <input type="text" name="NumeroAsegurado" id="NumeroAsegurado">
+        <label for="TipoSangre">Tipo de Sangre</label>
+        <input type="text" name="TipoSangre" id="TipoSangre">
+        <hr>
+        <label for="CuentaBancaria">Cuenta Bancaria</label>
+        <input type="text" name="CuentaBancaria" id="CuentaBancaria">
+        <label for="BancoEspecifico">Banco Especifico</label>
+        <input type="text" name="BancoEspecifico" id="BancoEspecifico">
+        <label for="Contrasena">Contrasena</label>
+        <input type="text" name="Contrasena" id="Contrasena">
+        <hr>
+        <label for="Provincia">Provincia</label>
+        <input type="text" name="Provincia" id="Provincia">
+        <label for="Canton">Canton</label>
+        <input type="text" name="Canton" id="Canton">
+        <label for="Distrito">Distrito</label>
+        <input type="text" name="Distrito" id="Distrito"> <br> <br>
+        <label for="DireccionExacta">Direccion Exacta</label>
+        <input type="text" name="Direccion" id="Direccion">
+        <input type="submit" value="Siguiente" style="margin-left: 480px;">
+        </form>
+    </fieldset>
+    <script src="js/InfoPersonal.js"></script>
+</body>
+</html>

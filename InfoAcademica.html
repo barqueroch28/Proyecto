@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion Academica</title>
+</head>
+<style>
+    fieldset{
+        width: fit-content;
+    }  
+    hr{
+        margin: 0px;
+        width: 350px;
+    }
+</style>
+<body>
+    <fieldset>
+        <h3>Información Académica Formal</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="BigGuardar()">
+        <label for="Institucion">Institucion: </label>
+        <input type="text" name="Institucion" id="Institucion1" style="width: fit-content;"><br><br>
+        <label for="Acreditacion">Acreditacion: </label>
+        <input type="text" name="Acreditacion" id="Acreditacion1"><br><br>
+        <label for="FechaGraduacion">Fecha Finalizó: </label>
+        <input type="date" name="FechaGraduacion" id="FechaGraduacion1" style="width: fit-content;"><br> <br>
+<br><hr> 
+    <h3>Información Académica Complementaria</h3>
+    <!--<form action="javascript:void(0);" method="post" onsubmit="GuardarAcademicaComp()">-->
+    <label for="Institucion">Institucion: </label>
+    <input type="text" name="Institucion2"  id="Institucion2"> <br><br>
+    <label for="Acreditacion">Acreditacion: </label>
+    <input type="text" name="Acreditacion" id="Acreditacion2"> <br><br>
+    <label for="FechaGraduacion">Fecha Finalizó: </label>
+    <input type="date" name="FechaGraduacion" id="FechaGraduacion2"><br>   
+<br><hr>
+        <h3>Información Académica Idioma</h3>
+        <label for="Idioma">Idioma: </label>
+        <input type="text" name="Idioma" id="Idioma1"><br><br>
+        <label for="Nivel">Acreditacion: </label>
+        <input type="text" name="Nivel" id="Nivel1"><br><br>
+        <input type="submit" value="Guardar">
+    </form>
+</fieldset>
+<!--<button type="submit" onsubmit="GetInfoFormal()">Traer Info</button>
+<table>
+    <tr>
+        <th>Institucion</th>
+        <th>Acreditacion</th>
+        <th>Finalizó</th>
+    </tr>
+    <tbody id="InfoFormal"></tbody>
+</table>-->
+<script src="js/InfoAcademica.js"></script>
+</body>
+</html>
