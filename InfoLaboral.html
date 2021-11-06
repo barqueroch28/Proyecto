@@ -23,11 +23,36 @@
         <input type="text" name="Institucion" id="Institucion"> <br> <br>
         <label for="FechaInicio">Fecha en la que Inició</label>
         <input type="date" name="FechaInicio" id="FechaInicio"> <br> <br>
-        <label for="FechaFin">Distrito</label>
+        <label for="FechaFin">Fecha en la que finalizo</label>
         <input type="date" name="FechaFin" id="FechaFin"> 
         <input type="submit" value="Siguiente">
         </form>
     </fieldset>
+    <button onclick="GetInfoLaboral()">Traer info</button>
+    
+    <table id="tablaInfoLaboral" hidden>
+        <h3 id="tituloLaboral"></h3>
+        <tr>
+            <th colspan="2">Acciones</th>
+            <th>Institucion</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha en la que Finalizó</th>
+        </tr>
+        <tbody id="tableLaboral"></tbody>
+    </table>
+    <div id="FormEditLaboral" hidden>
+        <form action="javascript:void(0);" onsubmit="EditarLaboral()">
+        <label>Institucion</label>
+        <input type="hidden" id="IdLaboral">
+        <input type="text" placeholder="Institución" id="editInstitucion"><br><br>
+        <label>Fecha en la que Inició</label>
+        <input type="date" id="editFechaInicio"><br><br>
+        <label>Fecha en la que Finalizó</label>
+        <input type="date" id="editFechaFin"><br><br>
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormLaboral()">&#10006;</a>
+        </form>
+    </div>
     <script src="js/InfoLaboral.js"></script>
 </body>
 </html>

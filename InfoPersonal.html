@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script src="js/InfoPersonal.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
     fieldset{
         width: fit-content;
@@ -13,6 +15,9 @@
     hr{
         margin: 10px;
         width: 825px;
+    }
+    tr, th, td{
+        border: black solid 1px;
     }
 </style>
 <body>
@@ -56,6 +61,86 @@
         <input type="submit" value="Siguiente" style="margin-left: 480px;">
         </form>
     </fieldset>
-    <script src="js/InfoPersonal.js"></script>
+    
+    <button onclick="TraerInfo()">Traer Informacion</button>
+    <fieldset>
+    <table id="TablaPInfo" hidden>
+        <tr>
+            <th colspan="2">Acciones</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Cedula</th>
+            <th> Fecha de Nacimiento</th>
+            <th>Estado Civil</th>
+            <th>Numero de Asegurado</th>
+            <th>Tipo de Sangre</th>
+            <th>IBAN</th>
+            <th>Banco Especifico</th>
+            <th>Contrasena</th>
+        </tr>
+        <tbody id="TablaPersonal"></tbody>
+    </table>
+    <div id="FormEditPersonal" hidden>
+        <h3>Editar Informacion Personal</h3>
+        <form action="javascript:void(0);" onsubmit="EditarPersonal()">
+        <input type="hidden" id="IdInfoPersonal">    
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="Nombre" id="editNombre">
+        <label for="1Apellido">Primer Apellido</label>
+        <input type="text" name="1Apellido" id="edit1Apellido">
+        <label for="2Apellido">Segundo Apellido</label>
+        <input type="text" name="2Apellido" id="edit2Apellido">
+        <hr>
+        <label for="Cedula">Cedula</label>
+        <input type="text" name="Cedula" id="editCedula">
+        <label for="FechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" name="FechaNacimiento" id="editFechaNacimiento">
+        <label for="EstadoCivil">Estado Civil</label>
+        <input type="text" name="EstadoCivil" id="editEstadoCivil">
+        <hr>
+        <label for="NumeroAsegurado">Numero Asegurado</label>
+        <input type="text" name="NumeroAsegurado" id="editNumeroAsegurado">
+        <label for="TipoSangre">Tipo de Sangre</label>
+        <input type="text" name="TipoSangre" id="editTipoSangre">
+        <hr>
+        <label for="CuentaBancaria">Cuenta Bancaria</label>
+        <input type="text" name="CuentaBancaria" id="editCuentaBancaria">
+        <label for="BancoEspecifico">Banco Especifico</label>
+        <input type="text" name="BancoEspecifico" id="editBancoEspecifico">
+        <label for="Contrasena">Contrasena</label>
+        <input type="text" name="Contrasena" id="editContrasena">
+        <hr>       
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormPersonal()">&#10006;</a>
+    </form>
+    </div>
+    <hr>
+    <table id="TablaPDire" hidden>
+        <tr>
+            <th colspan="2">Acciones</th>
+            <th>Provincia</th>
+            <th>Canton</th>
+            <th>Distrito</th>
+            <th>Direccion Exacta</th>
+        </tr>
+    <tbody id="TablaDireccion"></tbody>
+    </table>
+    <div id="FormEditarDireccion" hidden>
+    <form action="javascript:void(0);" onsubmit="EditarDireccion()">
+        <input type="hidden" id="IdInfoDireccion">
+        <label for="Provincia">Provincia</label>
+        <input type="text" name="Provincia" id="editProvincia">
+        <label for="Canton">Canton</label>
+        <input type="text" name="Canton" id="editCanton">
+        <label for="Distrito">Distrito</label>
+        <input type="text" name="Distrito" id="editDistrito"> <br> <br>
+        <label for="DireccionExacta">Direccion Exacta</label>
+        <input type="text" name="Direccion" id="editDireccion">
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormDireccion()">&#10006;</a>
+    </form>
+</div>
+</fieldset>
 </body>
 </html>

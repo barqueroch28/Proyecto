@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informacion Academica</title>
 </head>
+<script src="js/InfoAcademica.js"></script>
 <style>
     fieldset{
         width: fit-content;
@@ -14,7 +15,11 @@
         margin: 0px;
         width: 350px;
     }
+    .tableInfo{
+        border: black 1px solid;
+    }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <body>
     <fieldset>
         <h3>Información Académica Formal</h3>
@@ -43,15 +48,86 @@
         <input type="submit" value="Guardar">
     </form>
 </fieldset>
-<!--<button type="submit" onsubmit="GetInfoFormal()">Traer Info</button>
-<table>
+
+<button type="submit" onclick="BigGet()">Traer Info</button>
+<h3 id="tituloFormal"></h3>
+<table class="tableInfo" id="tablaInfoFormal" hidden>
     <tr>
+        <th colspan="2">Acciones</th>
         <th>Institucion</th>
         <th>Acreditacion</th>
-        <th>Finalizó</th>
+        <th>Fecha de Graduación</th>
     </tr>
     <tbody id="InfoFormal"></tbody>
-</table>-->
-<script src="js/InfoAcademica.js"></script>
+</table>
+
+<div id="EditInfoFormal" hidden>
+    <hr>
+    <h3>Editar Informacion Academica Formal</h3>
+    <form action="javascript:void(0);" onsubmit="EditarInfoFormal()">
+        <input type="hidden" id="idInfoFormal">
+        <label>Institución</label>
+        <input type="text" placeholder="Institucion" id="EditInstF"><br>
+        <label>Acreditacion</label>
+        <input type="text" placeholder="Acreditacion" id="EditAcrF"><br>
+        <label>Fecha de Graduación</label>
+        <input type="date" id="EditFinF"><br>
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormFormal()">&#10006;</a>
+    </form>
+</div>
+
+<h3 id="tituloComp"></h3>
+<table class="tableInfo" id="tablaInfoComp" hidden>
+    <tr>
+        <th colspan="2">Acciones</th>
+        <th>Institucion</th>
+        <th>Acreditacion</th>
+        <th>Fecha de Graduación</th>
+    </tr>
+    <tbody id="InfoComp"></tbody>
+</table>
+
+<div id="EditInfoComp" hidden>
+    <hr>
+    <h3>Editar Informacion Academica Complementaria</h3>
+    <form action="javascript:void(0);" onsubmit="EditarInfoComp()">
+        <input type="hidden" id="idInfoComp">
+        <label>Institución</label>
+        <input type="text" placeholder="Institucion" id="EditInstC"><br>
+        <label>Acreditacion</label>
+        <input type="text" placeholder="Acreditacion" id="EditAcrC"><br>
+        <label>Fecha de Graduación</label>
+        <input type="date" id="EditFinC"><br>
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormComp()">&#10006;</a>
+    </form>
+</div>
+
+<h3 id="tituloIdioma"></h3>
+<table id="TablaIdioma" class="tableInfo" hidden>
+    <tr>
+        <th colspan="2">Acciones</th>
+        <th>Idioma</th>
+        <th>Nivel</th>
+    </tr>
+    <tbody id="InfoIdioma"></tbody>
+</table>
+
+
+<div id="EditarInfoIdioma" hidden>
+    <h3>Editar Informacion Academica Idioma</h3>
+    <form action="javascript:void(0);" onsubmit="EditarInfoIdioma()">
+        <input type="hidden" id="IdInfoIdioma">
+        <label>Idioma</label>
+        <input type="text" id="EditIdioma">
+        <label>Nivel</label>
+        <input type="text" id="EditNivel">
+        <button type="submit">Guardar</button>
+        <a onclick="CerrarFormIdioma()">&#10006;</a>
+    </form>
+</div>
+
+
 </body>
 </html>

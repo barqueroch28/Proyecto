@@ -24,7 +24,8 @@ function Login(){
           window.location = 'InfoPersonal.html';
         }
       } else{
-        window.location = 'index.html';
+        alert('No se pueden dejar campos vacíos', 'Error');
+        window.location = 'index.html';      
       }
     })
     .then(()=> {cedula=''; contrasena='';})
@@ -35,7 +36,7 @@ function Login(){
     var cedula = $('#Cedula').val();
     fetch(`${uriGetId}/${cedula}`)
     .then(response => response.json())
-    .then(data => DisplayTh(data))        
+    .then(data => DisplayTh(data))
     .catch(e => console.error('no se pudo', e));
 }
 function DisplayTh(data){
@@ -46,7 +47,7 @@ function DisplayTh(data){
 function FillMenuBar(){
   const uriInfoPersonal = 'https://localhost:44351/api/InformacionPersonal';
   var id = localStorage.getItem('Id');
-  
+  alert(id);
   fetch(`${uriInfoPersonal}/${id}`)
   .then(response => response.json())
   .then(data => {
