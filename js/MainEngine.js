@@ -36,7 +36,7 @@ function Login(){
     var cedula = $('#Cedula').val();
     fetch(`${uriGetId}/${cedula}`)
     .then(response => response.json())
-    .then(data => DisplayTh(data))
+    .then(data => {localStorage.setItem('Id', data.idInfoPersonal)})
     .catch(e => console.error('no se pudo', e));
 }
 function DisplayTh(data){
