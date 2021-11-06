@@ -47,7 +47,6 @@ function DisplayTh(data){
 function FillMenuBar(){
   const uriInfoPersonal = 'https://localhost:44351/api/InformacionPersonal';
   var id = localStorage.getItem('Id');
-  alert(id);
   fetch(`${uriInfoPersonal}/${id}`)
   .then(response => response.json())
   .then(data => {
