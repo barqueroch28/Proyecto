@@ -2,30 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Informacion Personal</title>
+    <link rel="stylesheet" href="stylemenu.css">
+            <!-- CSS only -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </head>
-<style>
-    fieldset{
-        width: fit-content;
-    }  
-    hr{
-        margin: 10px;
-        width: 350px;
-    }
-</style>
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div id="sidemenu" class="menu-collapsed">
+        <!--  HEADER -->
+        <div id="header">
+            <div id="title"><span>Expediente Carnes Castillo</span></div>
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+        </div>
+        <!-- PROFILE -->
+        <div id="profile">
+            <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
+            <div id="name"><span id="span"><!--Jocsan Barquero <br> 118460064--></span></div>
+            
+        </div>
+        <!-- ITEMS -->
+        <div id="menu-items">
+            <div class="item">
+                <a href="./InfoPersonal.html">
+                    <div class="icon"><img src="./img/infopersonal.png" alt=""></div>
+                    <div class="title"><span>Informacion Personal</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="./InfoAcademica.html">
+                    <div class="icon"><img src="./img/education.png" alt=""></div>
+                    <div class="title"><span>Informacion Academica</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="./InfoLaboral.html">
+                    <div class="icon"><img src="./img/work.png" alt=""></div>
+                    <div class="title"><span>Experiencia Profesional</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+            </div>
+            <div class="item" id="item-salir">
+                <a href="#">
+                    <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
+                    <div class="title"><span>Cerrar sesion</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
     <fieldset>
-        <h3>Informacion Laboral</h3>
-        <form action="javascript:void(0);" method="post" onsubmit="MeasuredBoy()">
-        <label for="Institucion">Institucion</label>
-        <input type="text" name="Institucion" id="Institucion"> <br> <br>
-        <label for="FechaInicio">Fecha en la que Inició</label>
-        <input type="date" name="FechaInicio" id="FechaInicio"> <br> <br>
-        <label for="FechaFin">Fecha en la que finalizo</label>
-        <input type="date" name="FechaFin" id="FechaFin"> 
-        <input type="submit" value="Siguiente">
+        <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch" action="javascript:void(0);" method="POST" onsubmit="BigGuardar()">
+          <h3 class="fw-bold text-center py-3 text-secondary">Mi información Académica principal</h3>
+          <h4 class="fw-light py-3 text-secondary">Información laboral</h4>
+          <div class="form-row row g-2">
+            <div class="form-group col-md-3">
+              <label for="Institucion">Institucion:</label>
+              <input type="text" class="form-control" id="Institucion" name="Institucion" placeholder="Nombre de la institución">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="FechaInicio">Fecha en la que inició:</label>
+              <input type="date" class="form-control" id="FechaInicio" name="FechaInicio" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="FechaFin">Fecha en la que finalizó:</label>
+                <input type="date" class="form-control" id="FechaFin" name="FechaFin" placeholder="">
+              </div>
+
+          <div>
+            <button type="submit" class="btn btn-success mb-3">Añadir</button>
+          </div>
+        </div>  
         </form>
     </fieldset>
     <button onclick="GetInfoLaboral()">Traer info</button>
@@ -53,6 +113,22 @@
         <a onclick="CerrarFormLaboral()">&#10006;</a>
         </form>
     </div>
+    
+
+    <div><input type="text" id="IdPersona" disabled hidden>
+    <!--<input type="button" onclick="SetId()" value="Probar">--></div>
+    <script src="js/MainEngine.js"></script>
+    <script>
+        const btn = document.querySelector('#menu-btn');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");
+            SetId();
+            FillMenuBar();                       
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
+    </script>  
     <script src="js/InfoLaboral.js"></script>
 </body>
 </html>
