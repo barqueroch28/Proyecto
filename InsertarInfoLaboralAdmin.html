@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Información Laboral</title>
+    <link rel="stylesheet" href="stylemenu.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+    fieldset{
+        width: fit-content;
+    }  
+    hr{
+        margin: 10px;
+        width: 825px;
+    }
+    tr, th, td{
+        border: black solid 1px;
+    }
+</style>
+<body>
+    <script src="js/InfoLaboral.js"></script>
+    <div id="sidemenu" class="menu-collapsed">
+        <!--  HEADER -->
+        <div id="header">
+            <div id="title"><span>Expediente Carnes Castillo</span></div>
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+        </div>
+        <!-- PROFILE -->
+        <div id="profile">
+            <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
+            <div id="name"><span id="span"><!--Jocsan Barquero <br> 118460064--></span></div>
+            
+        </div>
+        <!-- ITEMS -->
+        <div id="menu-items">
+            <div class="item">
+                <a href="./InsertarInfoPersonalAdmin.html">
+                    <div class="icon"><img src="./img/infopersonal.png" alt=""></div>
+                    <div class="title"><span>Insertar Personal</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="./MostrarInfoAdmin.html">
+                    <div class="icon"><img src="./img/education.png" alt=""></div>
+                    <div class="title"><span>Mostrar y Editar Personal</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            
+            <div class="item separator">
+            </div>
+            <div class="item" id="item-salir">
+                <a href="#">
+                    <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
+                    <div class="title"><span>Cerrar sesion</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <fieldset>
+        <h3>Informacion Laboral</h3>
+        <form action="javascript:void(0);" method="post" onsubmit="MeasuredBoy()">
+        <label for="Institucion">Institucion</label>
+        <input type="text" name="Institucion" id="Institucion"> <br> <br>
+        <label for="FechaInicio">Fecha en la que Inició</label>
+        <input type="date" name="FechaInicio" id="FechaInicio"> <br> <br>
+        <label for="FechaFin">Fecha en la que finalizo</label>
+        <input type="date" name="FechaFin" id="FechaFin"> 
+        <input type="submit" value="Guardar" onclick="MostrarResultado()">
+        </form>
+    </fieldset>
+    <input type="text" id="IdPersona" disabled hidden>
+    <script>
+        const btn = document.querySelector('#menu-btn');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");
+            SetId();
+            FillMenuBar();                       
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
+    </script>
+    
+</body>
+</html>
