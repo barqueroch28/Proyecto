@@ -118,3 +118,6 @@ function CerrarFormLaboral(){
 function MeasuredBoy(){
     GuardarInfoLaboral();
 }
+function MostrarResultado(){
+    window.location = 'MostrarInfoAdmin.html';
+}

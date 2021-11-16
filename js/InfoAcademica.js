@@ -349,3 +349,7 @@ function BigGuardar(){
     GuardarAcademicaComp();
     GuardarAcademicaFormal();      
 }
+
+function NextPage(){
+    window.location = 'InsertarInfoLaboralAdmin.html';
+}

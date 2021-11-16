@@ -2,132 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informacion Academica</title>
+    <title>Informacion Personal</title>
+    <link rel="stylesheet" href="stylemenu.css">
+            <!-- CSS only -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 </head>
-<script src="js/InfoAcademica.js"></script>
-<style>
-    fieldset{
-        width: fit-content;
-    }  
-    hr{
-        margin: 0px;
-        width: 350px;
-    }
-    .tableInfo{
-        border: black 1px solid;
-    }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div id="sidemenu" class="menu-collapsed">
+        <!--  HEADER -->
+        <div id="header">
+            <div id="title"><span>Expediente Carnes Castillo</span></div>
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+        </div>
+        <!-- PROFILE -->
+        <div id="profile">
+            <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
+            <div id="name"><span id="span"><!--Jocsan Barquero <br> 118460064--></span></div>
+            
+        </div>
+        <!-- ITEMS -->
+        <div id="menu-items">
+            <div class="item">
+                <a href="./InfoPersonal.html">
+                    <div class="icon"><img src="./img/infopersonal.png" alt=""></div>
+                    <div class="title"><span>Informacion Personal</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="./InfoAcademica.html">
+                    <div class="icon"><img src="./img/education.png" alt=""></div>
+                    <div class="title"><span>Informacion Academica</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="./InfoLaboral.html">
+                    <div class="icon"><img src="./img/work.png" alt=""></div>
+                    <div class="title"><span>Experiencia Profesional</span></div>
+                </a>
+            </div>
+            <div class="item separator">
+            </div>
+            <div class="item" id="item-salir">
+                <a href="#">
+                    <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
+                    <div class="title"><span>Cerrar sesion</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
     <fieldset>
-        <h3>Información Académica Formal</h3>
-    <form action="javascript:void(0);" method="POST" onsubmit="BigGuardar()">
-        <label for="Institucion">Institucion: </label>
-        <input type="text" name="Institucion" id="Institucion1" style="width: fit-content;"><br><br>
-        <label for="Acreditacion">Acreditacion: </label>
-        <input type="text" name="Acreditacion" id="Acreditacion1"><br><br>
-        <label for="FechaGraduacion">Fecha Finalizó: </label>
-        <input type="date" name="FechaGraduacion" id="FechaGraduacion1" style="width: fit-content;"><br> <br>
-<br><hr> 
-    <h3>Información Académica Complementaria</h3>
-    <!--<form action="javascript:void(0);" method="post" onsubmit="GuardarAcademicaComp()">-->
-    <label for="Institucion">Institucion: </label>
-    <input type="text" name="Institucion2"  id="Institucion2"> <br><br>
-    <label for="Acreditacion">Acreditacion: </label>
-    <input type="text" name="Acreditacion" id="Acreditacion2"> <br><br>
-    <label for="FechaGraduacion">Fecha Finalizó: </label>
-    <input type="date" name="FechaGraduacion" id="FechaGraduacion2"><br>   
-<br><hr>
-        <h3>Información Académica Idioma</h3>
-        <label for="Idioma">Idioma: </label>
-        <input type="text" name="Idioma" id="Idioma1"><br><br>
-        <label for="Nivel">Acreditacion: </label>
-        <input type="text" name="Nivel" id="Nivel1"><br><br>
-        <input type="submit" value="Guardar">
-    </form>
-</fieldset>
-
-<button type="submit" onclick="BigGet()">Traer Info</button>
-<h3 id="tituloFormal"></h3>
-<table class="tableInfo" id="tablaInfoFormal" hidden>
-    <tr>
-        <th colspan="2">Acciones</th>
-        <th>Institucion</th>
-        <th>Acreditacion</th>
-        <th>Fecha de Graduación</th>
-    </tr>
-    <tbody id="InfoFormal"></tbody>
-</table>
-
-<div id="EditInfoFormal" hidden>
-    <hr>
-    <h3>Editar Informacion Academica Formal</h3>
-    <form action="javascript:void(0);" onsubmit="EditarInfoFormal()">
-        <input type="hidden" id="idInfoFormal">
-        <label>Institución</label>
-        <input type="text" placeholder="Institucion" id="EditInstF"><br>
-        <label>Acreditacion</label>
-        <input type="text" placeholder="Acreditacion" id="EditAcrF"><br>
-        <label>Fecha de Graduación</label>
-        <input type="date" id="EditFinF"><br>
-        <button type="submit">Guardar</button>
-        <a onclick="CerrarFormFormal()">&#10006;</a>
-    </form>
-</div>
-
-<h3 id="tituloComp"></h3>
-<table class="tableInfo" id="tablaInfoComp" hidden>
-    <tr>
-        <th colspan="2">Acciones</th>
-        <th>Institucion</th>
-        <th>Acreditacion</th>
-        <th>Fecha de Graduación</th>
-    </tr>
-    <tbody id="InfoComp"></tbody>
-</table>
-
-<div id="EditInfoComp" hidden>
-    <hr>
-    <h3>Editar Informacion Academica Complementaria</h3>
-    <form action="javascript:void(0);" onsubmit="EditarInfoComp()">
-        <input type="hidden" id="idInfoComp">
-        <label>Institución</label>
-        <input type="text" placeholder="Institucion" id="EditInstC"><br>
-        <label>Acreditacion</label>
-        <input type="text" placeholder="Acreditacion" id="EditAcrC"><br>
-        <label>Fecha de Graduación</label>
-        <input type="date" id="EditFinC"><br>
-        <button type="submit">Guardar</button>
-        <a onclick="CerrarFormComp()">&#10006;</a>
-    </form>
-</div>
-
-<h3 id="tituloIdioma"></h3>
-<table id="TablaIdioma" class="tableInfo" hidden>
-    <tr>
-        <th colspan="2">Acciones</th>
-        <th>Idioma</th>
-        <th>Nivel</th>
-    </tr>
-    <tbody id="InfoIdioma"></tbody>
-</table>
-
-
-<div id="EditarInfoIdioma" hidden>
-    <h3>Editar Informacion Academica Idioma</h3>
-    <form action="javascript:void(0);" onsubmit="EditarInfoIdioma()">
-        <input type="hidden" id="IdInfoIdioma">
-        <label>Idioma</label>
-        <input type="text" id="EditIdioma">
-        <label>Nivel</label>
-        <input type="text" id="EditNivel">
-        <button type="submit">Guardar</button>
-        <a onclick="CerrarFormIdioma()">&#10006;</a>
-    </form>
-</div>
-
-
+        <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch" action="javascript:void(0);" method="POST">
+          <h3 class="fw-bold text-center py-3 text-secondary">Mi información Académica principal</h3>
+          <h4 class="fw-light py-3 text-secondary">Información Academica Formal</h4>
+          <div class="form-row row g-2">
+            <div class="form-group col-md-3">
+              <label for="Institucion">Institucion:</label>
+              <input type="text" class="form-control" id="InstitucionF" name="InstitucionF" placeholder="Institución" disabled>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="Acreditacion">Acreditación:</label>
+              <input type="text" class="form-control" id="AcreditacionF" name="AcreditacionF" placeholder="Acreditación" disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="FechaFin">Fecha en la que finalizó:</label>
+                <input type="text" class="form-control" id="FechaFinF" name="FechaFinF" placeholder="Fecha de Graduación" disabled>
+              </div>
+              <h4 class="fw-light py-3 text-secondary">Información Academica Complementaria</h4>
+              <div class="form-group col-md-3">
+                  <label for="Institucion">Institución:</label>
+                  <input type="text" name="Institucion" id="InstitucionC" class="form-control" placeholder="Institución" disabled>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="Acreditacion">Acreditación:</label>
+                <input type="text" name="Acreditacion" id="AcreditacionC" class="form-control" placeholder="Acreditación" disabled>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="FechaFin">Fecha en la que finalizó:</label>
+                <input type="text" name="FechaFin" id="FechaFinC" class="form-control" placeholder="Fecha de Graduación" disabled>
+              </div>
+              <div class="form-group">
+                <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
+                <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarComp()">Editar</button>
+                <a onclick="DeshabilitarComp()" id="Cerrar1" hidden>&#10006;</a>
+            </div>
+              <h4 class="fw-light py-3 text-secondary">Información Academica Idioma</h4>
+              <div class="form-group col-md-3">
+                <label for="Idioma">Idioma:</label>
+                <input type="text" name="Idioma" id="Idioma" class="form-control" placeholder="Idioma" disabled>
+              </div>
+              <div class="form-group col-md-3">
+                  <label for="Nivel">Nivel:</label>
+                  <input type="text" name="Nivel" id="Nivel" class="form-control" placeholder="Nivel" disabled>
+              </div>
+              <div class="form-group">
+                <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
+                <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarComp()">Editar</button>
+                <a onclick="DeshabilitarComp()" id="Cerrar2" hidden>&#10006;</a>
+            </div>
+        </div>  
+        </form>
+    </fieldset>
+    <input type="text" id="IdPersona" disabled hidden>
+    <script src="js/MainEngine.js"></script>
+    <script>
+        FillMenuBar();
+        FillInfoAcaFormal();
+        FillInfoAcaComp();
+        FillInfoAcaIdioma();
+        SetId();
+        const btn = document.querySelector('#menu-btn');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");                                            
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
+    </script>  
+    <script src="js/InfoLaboral.js"></script>
 </body>
 </html>

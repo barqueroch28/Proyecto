@@ -85,6 +85,7 @@ function GuardarInfoDireccion(){
 function MostrarInfoPersonal(data){
     let button = document.createElement('button');
     let table = document.getElementById('TablaPersonal');
+    document.getElementById('TituloPersonal').innerHTML = 'Informacion Personal';
     table.innerHTML = '';
     let tablaPrincipal = document.getElementById('TablaPInfo');
     tablaPrincipal.hidden = false;
@@ -216,7 +217,7 @@ function CerrarFormPersonal(){
 function MostrarInfoDireccion(data){
     let tabla = document.getElementById('TablaDireccion');
     let tablaPrincipal = document.getElementById('TablaPDire');
-    
+    document.getElementById('TituloDireccion').innerHTML = 'Informacion Direccion';
     const button = document.createElement('button');
     tabla.innerHTML = '';
     tablaPrincipal.hidden = false;
@@ -309,5 +310,9 @@ function TraerInfo(){
 }
 function BigBoy(){
     GuardarInfoDireccion();
-    GuardarInfoPersonal();   
+    GuardarInfoPersonal(); 
+      
+}
+function NextPage(){
+    window.location = 'InsertarInfoAcademicaAdmin.html';
 }
