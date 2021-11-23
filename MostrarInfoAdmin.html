@@ -33,6 +33,7 @@
         GetInfoPersonal();
         GetInfoDireccion();
         BigGet();
+        GetInfoContacto();
     </script>
     <div class="main-container">
         <div id="sidemenu" class="menu-collapsed">
@@ -385,17 +386,80 @@
                     </div>
                 </form>
             </div>
+            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch">
+                <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
+                <tr>
+                    <th>Acciones</th>
+                    <th>Teléfono Celular</th>
+                    <th>Teléfono Oficina</th>
+                    <th>Teléfeno Casa</th>
+                    <th>Teléfono Extra</th>
+                    <th>Email</th>
+                    <th>ZIP</th>
+                    <th>Contacto de Emergencia</th>
+                    <th>Nombre del Contacto</th>
+                </tr>
+                <tbody id="tableContacto"></tbody>
+            </table>
+            <div id="EditarInfoContacto" hidden>
+                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Contacto</h3>
+                <form action="javascript:void(0);" onsubmit="EditarContacto()"
+                 class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+                 <input type="hidden" name="id" id="idContacto">
+                    <div class="form-group col-md-3">
+                        <label for="TCelular">Teléfono Celular</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="editTCelular" class="form-control">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="TOficina">Teléfono Oficina</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TOficina" id="editTOficina" class="form-control">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="TCasa">Teléfono Casa</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCasa" id="editTCasa" class="form-control"> 
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="TExtra">Teléfono Extra</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TExtra" id="editTExtra" class="form-control">
+                      </div>
+                      <div class="form-group col-md-5">
+                        <label for="Email">Email</label>
+                        <input type="email" name="Email" id="editEmail" class="form-control">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="ZIP">Codigo Postal</label>
+                        <input type="text" name="ZIP" id="editZIP" class="form-control">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="TEmergencia">Telefono de Emergencia</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TEmergencia" id="editTEmergencia" class="form-control">
+                      </div>
+                      <div class="form-group col-md-5">
+                        <label for="NomEmergencia">Nombre del contacto</label>
+                        <input type="text" name="NomEmergencia" id="editNomEmergencia" class="form-control">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a onclick="CerrarFormContacto()">&#10006;</a>
+                    </div>
+                </form>
+            </div>
         </fieldset>
     </div>
     <input type="text" id="IdPersona" disabled hidden>
+    <input type="text" id="IdNewCliente" disabled hidden>
     <script>
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
+        var p = localStorage.getItem('IdCliente');
         btn.addEventListener('click', e => {
             menu.classList.toggle("menu-expanded");
             menu.classList.toggle("menu-collapsed");
             SetId();
             FillMenuBar();
+            GetIdNewCliente();
+            SetIdNewCliente();
+            console.log(p);
             document.querySelector('body').classList.toggle('body-expanded');
         });
     </script>

@@ -77,7 +77,7 @@
     </div>
     <fieldset>
       <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
-        action="javascript:void(0);" method="post" >
+        action="javascript:void(0);" method="post">
         <h3 class="fw-bold text-center py-3 text-secondary">Información Principal</h3>
 
         <h4 class="fw-light py-3 text-secondary">Información personal</h4>
@@ -191,16 +191,49 @@
           <textarea class="form-control" id="Direccion" rows="3" name="Direccion" disabled>
           </textarea>
         </div>
-        <div class="form-group">
-          <div class="form-check">
-          </div>
+
+        <h4 class="fw-light py-3 text-secondary">Información Contacto</h4>
+        <div class="form-group col-md-3">
+          <label for="TCelular">Teléfono Celular</label>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="TCelular" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="TOficina">Teléfono Oficina</label>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TOficina" id="TOficina" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="TCasa">Teléfono Casa</label>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCasa" id="TCasa" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="TExtra">Teléfono Extra</label>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TExtra" id="TExtra" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="Email">Email</label>
+          <input type="email" name="Email" id="Email" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="ZIP">Codigo Postal</label>
+          <input type="text" name="ZIP" id="ZIP" class="form-control" disabled>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="TEmergencia">Telefono de Emergencia</label>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TEmergencia" id="TEmergencia" class="form-control"
+            disabled>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="NomEmergencia">Nombre del contacto</label>
+          <input type="text" name="NomEmergencia" id="NomEmergencia" class="form-control" disabled>
         </div>
         <input type="hidden" name="Contrasena" id="Contrasena">
-        <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
-        <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarEspacio()">Editar</button>
-        <a onclick="DeshabilitarEspacio()" id="Cerrar" hidden>&#10006;</a>
+        <div class="form-group">
+          <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
+          <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarEspacio()">Editar</button>
+          <a onclick="DeshabilitarEspacio()" id="Cerrar" hidden>&#10006;</a>
+        </div>
         <input type="text" id="IdPersona" disabled hidden>
-      </form>     
+      </form>
     </fieldset>
   </div>
 
@@ -208,6 +241,7 @@
   <script>
     FillInfoPersonal();
     FillInfoDireccion();
+    FillInfoContacto();
     const btn = document.querySelector('#menu-btn');
     const menu = document.querySelector('#sidemenu');
     btn.addEventListener('click', e => {
@@ -217,10 +251,10 @@
       FillMenuBar();
       document.querySelector('body').classList.toggle('body-expanded');
     });
-    
-    
+
+
   </script>
-  <script src="js/InfoPersonal.js"></script>
+  <script src="js/Admin.js"></script>
 </body>
 
 </html>

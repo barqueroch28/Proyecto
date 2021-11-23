@@ -2,260 +2,257 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar Informacion Personal</title>
-    <link rel="stylesheet" href="stylemenu.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insertar Informacion Personal</title>
+  <link rel="stylesheet" href="stylemenu.css">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-<script src="js/InfoPersonal.js"></script>
+<!--<script src="js/InfoPersonal.js"></script>-->
 <script src="js/MainEngine.js"></script>
+<script src="js/Admin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
-    fieldset {
-        width: fit-content;
-    }
+  fieldset {
+    width: fit-content;
+  }
 
-    hr {
-        margin: 10px;
-        width: 825px;
-    }
+  hr {
+    margin: 10px;
+    width: 825px;
+  }
 
-    tr,
-    th,
-    td {
-        border: black solid 1px;
-    }
+  tr,
+  th,
+  td {
+    border: black solid 1px;
+  }
 </style>
 
 <body>
-    <div class="main-container">
-        <div id="sidemenu" class="menu-collapsed">
-            <!--  HEADER -->
-            <div id="header">
-                <div id="title"><span>Expediente Carnes Castillo</span></div>
-                <div id="menu-btn">
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
-                </div>
-            </div>
-            <!-- PROFILE -->
-            <div id="profile">
-                <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
-                <div id="name"><span id="span">
-                        <!--Jocsan Barquero <br> 118460064-->
-                    </span></div>
-
-            </div>
-            <!-- ITEMS -->
-            <div id="menu-items">
-                <div class="item">
-                    <a href="./InsertarInfoPersonalAdmin.html">
-                        <div class="icon"><img src="./img/infopersonal.png" alt=""></div>
-                        <div class="title"><span>Insertar Personal</span></div>
-                    </a>
-                </div>
-                <div class="item separator">
-
-                </div>
-                <div class="item">
-                    <a href="./MostrarInfoAdmin.html">
-                        <div class="icon"><img src="./img/education.png" alt=""></div>
-                        <div class="title"><span>Mostrar y Editar Personal</span></div>
-                    </a>
-                </div>
-                <div class="item separator">
-
-                </div>
-
-                <div class="item separator">
-                </div>
-                <div class="item" id="item-salir">
-                    <a href="#">
-                        <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
-                        <div class="title"><span>Cerrar sesion</span></div>
-                    </a>
-                </div>
-            </div>
+  <div class="main-container">
+    <div id="sidemenu" class="menu-collapsed">
+      <!--  HEADER -->
+      <div id="header">
+        <div id="title"><span>Expediente Carnes Castillo</span></div>
+        <div id="menu-btn">
+          <div class="btn-hamburger"></div>
+          <div class="btn-hamburger"></div>
+          <div class="btn-hamburger"></div>
         </div>
       </div>
-        <fieldset>
-            
-            <form action="javascript:void(0);" method="post" onsubmit="BigBoy()" class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
-                <h3 class="fw-light text-center py-3 text-secondary">Informacion Personal</h3>
-                <div class="form-row row g-2">
-                    <div class="form-group col-md-3">
-                      <label for="Nombre">Nombre:</label>
-                      <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre del empleado" >
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="Nombre">Primer apellido:</label>
-                      <input type="text" class="form-control" id="1Apellido" name="1Apellido"
-                        placeholder="Primer apellido del empleado" >
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="Nombre">Segundo apellido:</label>
-                      <input type="text" class="form-control" id="2Apellido" name="2Apellido"
-                        placeholder="Segundo apellido del empleado" >
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="Contrasena">Contraseña:</label>
-                        <input type="password" class="form-control" id="Contrasena" placeholder="Contraseña">
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="Nombre">Cédula:</label>
-                      <input type="text" class="form-control" id="Cedula" name="Cedula"
-                        placeholder="Número de cédula" >
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="Nombre">Fecha de Nacimiento:</label>
-                      <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento"
-                        placeholder="Fecha de nacimiento" >
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="EstadoCivil">Estado Civil:</label>
-                      <select name="EstadoCivil" id="EstadoCivil" class="form-control" >
-                        <option selected>Soltero</option>
-                        <option>Casado</option>
-                        <option>Viudo</option>
-                      </select>
-                    </div>
-                    <div></div>
-                    <div class="form-group col-md-4">
-                      <label for="Nombre">Numero de Asegurado:</label>
-                      <input type="text" class="form-control" id="NumeroAsegurado" name="NumeroAsegurado"
-                        placeholder="Numero de asegurado">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="TipoSangre">Tipo de sangre:</label>
-                      <select name="TipoSangre" id="TipoSangre" class="form-control" placeholder="Escoja una opción">
-                        <option>O-</option>
-                        <option>O+</option>
-                        <option>A-</option>
-                        <option>A+</option>
-                        <option>B-</option>
-                        <option>B+</option>
-                        <option>AB-</option>
-                        <option>AB+</option>
-                      </select>
-                    </div>
-                    <div></div>
-                    <div class="form-group col-md-2">
-                     <!--<label for="Contrasena">Contraseña:</label>
-                      <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="********">--> 
-                    </div>
-          
-          
-                    <h4 class="fw-light py-3 text-secondary">Información bancaria</h4>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="BancoEspecifico">Tipo de Banco:</label>
-                    <!--<input type="text" id="BancoEspecifico" class="form-control">-->
-                    <select name="BancoEspecifico" id="BancoEspecifico" class="form-control">
-                      <option>Banco Crédito Agrícola de Cartago</option>
-                      <option>Banco de Costa Rica</option>
-                      <option>Banco Nacional de Costa Rica</option>
-                      <option>Banco popular y de Desarrollo Comunal</option>
-          
-                    </select>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="CuentaBancaria">IBAN:</label>
-                    <input type="text" class="form-control" id="CuentaBancaria" name="CuentaBancaria"
-                      placeholder="Número IBAN de cuenta bancaria" >
-                  </div>
-                  <h4 class="fw-light py-3 text-secondary">Información de residencia</h4>
-                  <div class="form-group col-md-4">
-                    <label for="Provincia">Provincia:</label>
-                    <select id="Provincia" class="form-control">
-                      <option selected>San José</option>
-                      <option>Alajuela</option>
-                      <option>Heredia</option>
-                      <option>Cartago</option>
-                      <option>Puntarenas</option>
-                      <option>Guanacaste</option>
-                      <option>Limón</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="Canton">Cantón:</label>
-                    <input type="text" class="form-control" id="Canton" name="Canton" placeholder="Nombre de Cantón">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="Distrito">Distrito:</label>
-                    <input type="text" class="form-control" id="Distrito" name="Distrito" placeholder="Nombre del Distrito">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="DireccionExacta">Dirección exacta:</label>
-                    <textarea class="form-control" id="Direccion" rows="3" name="Direccion">
-                    </textarea>
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                    </div>
-                  </div>
-                  <input type="submit" value="Siguiente" style="margin-left: 480px;" onclick="NextPage()">
-                  
-                <!--<label for="Nombre">Nombre</label>
-                <input type="text" name="Nombre" id="Nombre">
-                <label for="1Apellido">Primer Apellido</label>
-                <input type="text" name="1Apellido" id="1Apellido">
-                <label for="2Apellido">Segundo Apellido</label>
-                <input type="text" name="2Apellido" id="2Apellido">
-                <hr>
-                <label for="Cedula">Cedula</label>
-                <input type="text" name="Cedula" id="Cedula">
-                <label for="FechaNacimiento">Fecha de Nacimiento</label>
-                <input type="date" name="FechaNacimiento" id="FechaNacimiento">
-                <label for="EstadoCivil">Estado Civil</label>
-                <input type="text" name="EstadoCivil" id="EstadoCivil">
-                <hr>
-                <label for="NumeroAsegurado">Numero Asegurado</label>
-                <input type="text" name="NumeroAsegurado" id="NumeroAsegurado">
-                <label for="TipoSangre">Tipo de Sangre</label>
-                <input type="text" name="TipoSangre" id="TipoSangre">
-                <hr>
-                <label for="CuentaBancaria">Cuenta Bancaria</label>
-                <input type="text" name="CuentaBancaria" id="CuentaBancaria">
-                <label for="BancoEspecifico">Banco Especifico</label>
-                <input type="text" name="BancoEspecifico" id="BancoEspecifico">
-                <label for="Contrasena">Contrasena</label>
-                <input type="text" name="Contrasena" id="Contrasena">
-                <hr>
-                <label for="Provincia">Provincia</label>
-                <input type="text" name="Provincia" id="Provincia">
-                <label for="Canton">Canton</label>
-                <input type="text" name="Canton" id="Canton">
-                <label for="Distrito">Distrito</label>
-                <input type="text" name="Distrito" id="Distrito"> <br> <br>
-                <label for="DireccionExacta">Direccion Exacta</label>
-                <input type="text" name="Direccion" id="Direccion">
-                <input type="submit" value="Siguiente" style="margin-left: 480px;" onclick="NextPage()">-->
-            </form>
-        </fieldset>
-    
-    <input type="text" id="IdPersona" disabled hidden>
-    <script>
-        const btn = document.querySelector('#menu-btn');
-        const menu = document.querySelector('#sidemenu');
-        FillMenuBar();
-        btn.addEventListener('click', e => {
-            menu.classList.toggle("menu-expanded");
-            menu.classList.toggle("menu-collapsed");
+      <!-- PROFILE -->
+      <div id="profile">
+        <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
+        <div id="name"><span id="span">
+            <!--Jocsan Barquero <br> 118460064-->
+          </span></div>
 
-            document.querySelector('body').classList.toggle('body-expanded');
-        });
-    </script>
+      </div>
+      <!-- ITEMS -->
+      <div id="menu-items">
+        <div class="item">
+          <a href="./InsertarInfoPersonalAdmin.html">
+            <div class="icon"><img src="./img/infopersonal.png" alt=""></div>
+            <div class="title"><span>Insertar Personal</span></div>
+          </a>
+        </div>
+        <div class="item separator">
+
+        </div>
+        <div class="item">
+          <a href="./MostrarInfoAdmin.html">
+            <div class="icon"><img src="./img/education.png" alt=""></div>
+            <div class="title"><span>Mostrar y Editar Personal</span></div>
+          </a>
+        </div>
+        <div class="item separator">
+
+        </div>
+
+        <div class="item separator">
+        </div>
+        <div class="item" id="item-salir">
+          <a href="#">
+            <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
+            <div class="title"><span>Cerrar sesion</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <fieldset>
+
+    <form action="javascript:void(0);" method="post" onsubmit="BigBoy()"
+      class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+      <h3 class="fw-light text-center py-3 text-secondary">Informacion Personal</h3>
+      <div class="form-row row g-2">
+        <div class="form-group col-md-3">
+          <label for="Nombre">Nombre:</label>
+          <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre del empleado">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nombre">Primer apellido:</label>
+          <input type="text" class="form-control" id="1Apellido" name="1Apellido"
+            placeholder="Primer apellido del empleado">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nombre">Segundo apellido:</label>
+          <input type="text" class="form-control" id="2Apellido" name="2Apellido"
+            placeholder="Segundo apellido del empleado">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Contrasena">Contraseña:</label>
+          <input type="password" class="form-control" id="Contrasena" placeholder="Contraseña">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nombre">Cédula:</label>
+          <input type="text" class="form-control" id="Cedula" name="Cedula" placeholder="Número de cédula">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Nombre">Fecha de Nacimiento:</label>
+          <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento"
+            placeholder="Fecha de nacimiento">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="EstadoCivil">Estado Civil:</label>
+          <select name="EstadoCivil" id="EstadoCivil" class="form-control">
+            <option selected>Soltero</option>
+            <option>Casado</option>
+            <option>Viudo</option>
+          </select>
+        </div>
+        <div></div>
+        <div class="form-group col-md-4">
+          <label for="Nombre">Numero de Asegurado:</label>
+          <input type="text" class="form-control" id="NumeroAsegurado" name="NumeroAsegurado"
+            placeholder="Numero de asegurado">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="TipoSangre">Tipo de sangre:</label>
+          <select name="TipoSangre" id="TipoSangre" class="form-control" placeholder="Escoja una opción">
+            <option>O-</option>
+            <option>O+</option>
+            <option>A-</option>
+            <option>A+</option>
+            <option>B-</option>
+            <option>B+</option>
+            <option>AB-</option>
+            <option>AB+</option>
+          </select>
+        </div>
+        <div></div>
+        <div class="form-group col-md-2">
+          <!--<label for="Contrasena">Contraseña:</label>
+                      <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="********">-->
+        </div>
+
+
+        <h4 class="fw-light py-3 text-secondary">Información bancaria</h4>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="BancoEspecifico">Tipo de Banco:</label>
+        <!--<input type="text" id="BancoEspecifico" class="form-control">-->
+        <select name="BancoEspecifico" id="BancoEspecifico" class="form-control">
+          <option>Banco Crédito Agrícola de Cartago</option>
+          <option>Banco de Costa Rica</option>
+          <option>Banco Nacional de Costa Rica</option>
+          <option>Banco popular y de Desarrollo Comunal</option>
+
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="CuentaBancaria">IBAN:</label>
+        <input type="text" class="form-control" id="CuentaBancaria" name="CuentaBancaria"
+          placeholder="Número IBAN de cuenta bancaria">
+      </div>
+      <h4 class="fw-light py-3 text-secondary">Información de residencia</h4>
+      <div class="form-group col-md-4">
+        <label for="Provincia">Provincia:</label>
+        <select id="Provincia" class="form-control">
+          <option selected>San José</option>
+          <option>Alajuela</option>
+          <option>Heredia</option>
+          <option>Cartago</option>
+          <option>Puntarenas</option>
+          <option>Guanacaste</option>
+          <option>Limón</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Canton">Cantón:</label>
+        <input type="text" class="form-control" id="Canton" name="Canton" placeholder="Nombre de Cantón">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Distrito">Distrito:</label>
+        <input type="text" class="form-control" id="Distrito" name="Distrito" placeholder="Nombre del Distrito">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="DireccionExacta">Dirección exacta:</label>
+        <textarea class="form-control" id="Direccion" rows="3" name="Direccion">
+                    </textarea>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+        </div>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="TCelular">Teléfono Celular</label>
+        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="TCelular" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="TOficina">Teléfono Oficina</label>
+        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TOficina" id="TOficina" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="TCasa">Teléfono Casa</label>
+        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCasa" id="TCasa" class="form-control"> 
+      </div>
+      <div class="form-group col-md-3">
+        <label for="TExtra">Teléfono Extra</label>
+        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TExtra" id="TExtra" class="form-control">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" id="Email" class="form-control">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="ZIP">Codigo Postal</label>
+        <input type="text" name="ZIP" id="ZIP" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="TEmergencia">Telefono de Emergencia</label>
+        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TEmergencia" id="TEmergencia" class="form-control">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="NomEmergencia">Nombre del contacto</label>
+        <input type="text" name="NomEmergencia" id="NomEmergencia" class="form-control">
+      </div>
+      <input type="submit" value="Siguiente" style="margin-left: 480px;" onclick="NextPagePersonal()">
+    </form>
+  </fieldset>
+
+  <input type="text" id="IdPersona" disabled hidden>
+  <script>
+    const btn = document.querySelector('#menu-btn');
+    const menu = document.querySelector('#sidemenu');
+    FillMenuBar();
+    btn.addEventListener('click', e => {
+      menu.classList.toggle("menu-expanded");
+      menu.classList.toggle("menu-collapsed");
+      document.querySelector('body').classList.toggle('body-expanded');
+    });
+  </script>
 </body>
 
 </html>

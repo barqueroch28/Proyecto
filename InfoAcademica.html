@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informacion Personal</title>
     <link rel="stylesheet" href="stylemenu.css">
-            <!-- CSS only -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-            <!-- JavaScript Bundle with Popper -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <div id="sidemenu" class="menu-collapsed">
@@ -25,8 +30,10 @@
         <!-- PROFILE -->
         <div id="profile">
             <div id="photo"><img src="./img/foto.png" alt="" id="fotoUser"></div>
-            <div id="name"><span id="span"><!--Jocsan Barquero <br> 118460064--></span></div>
-            
+            <div id="name"><span id="span">
+                    <!--Jocsan Barquero <br> 118460064-->
+                </span></div>
+
         </div>
         <!-- ITEMS -->
         <div id="menu-items">
@@ -65,73 +72,134 @@
         </div>
     </div>
     <fieldset>
-        <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch" action="javascript:void(0);" method="POST">
-          <h3 class="fw-bold text-center py-3 text-secondary">Mi información Académica principal</h3>
-          <h4 class="fw-light py-3 text-secondary">Información Academica Formal</h4>
-          <div class="form-row row g-2">
-            <div class="form-group col-md-3">
-              <label for="Institucion">Institucion:</label>
-              <input type="text" class="form-control" id="InstitucionF" name="InstitucionF" placeholder="Institución" disabled>
+        <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
+            action="javascript:void(0);" method="POST">
+            <h3 class="fw-bold text-center py-3 text-secondary">Mi información Académica principal</h3>
+            <h4 class="fw-light py-3 text-secondary">Información Academica Formal</h4>
+            <div id="FormFormal" hidden class="form-row row g-2">
+                <div class="form-group col-md-3">
+                    <label for="Institucion">Institucion:</label>
+                    <input type="text" class="form-control" id="InstitucionF" name="InstitucionF"
+                        placeholder="Institución" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Acreditacion">Acreditación:</label>
+                    <input type="text" class="form-control" id="AcreditacionF" name="AcreditacionF"
+                        placeholder="Acreditación" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="FechaFin">Fecha en la que finalizó:</label>
+                    <input type="date" class="form-control" id="FechaFinF" name="FechaFinF"
+                        placeholder="Fecha de Graduación" disabled>
+                </div>
             </div>
-            <div class="form-group col-md-3">
-              <label for="Acreditacion">Acreditación:</label>
-              <input type="text" class="form-control" id="AcreditacionF" name="AcreditacionF" placeholder="Acreditación" disabled>
+            <div>
+                <table id="TableFormal" class="table table-responsive">
+                    <tr>
+                        <th>Acciones</th>
+                        <th>Institución</th>
+                        <th>Acreditación</th>
+                        <th>Fecha en la que finalizó</th>
+                    </tr>
+                    <tbody id="BodyFormal"></tbody>
+                </table>
             </div>
-            <div class="form-group col-md-3">
-                <label for="FechaFin">Fecha en la que finalizó:</label>
-                <input type="text" class="form-control" id="FechaFinF" name="FechaFinF" placeholder="Fecha de Graduación" disabled>
-              </div>
-              <h4 class="fw-light py-3 text-secondary">Información Academica Complementaria</h4>
-              <div class="form-group col-md-3">
-                  <label for="Institucion">Institución:</label>
-                  <input type="text" name="Institucion" id="InstitucionC" class="form-control" placeholder="Institución" disabled>
-              </div>
-              <div class="form-group col-md-3">
-                <label for="Acreditacion">Acreditación:</label>
-                <input type="text" name="Acreditacion" id="AcreditacionC" class="form-control" placeholder="Acreditación" disabled>
-              </div>
-              <div class="form-group col-md-3">
-                <label for="FechaFin">Fecha en la que finalizó:</label>
-                <input type="text" name="FechaFin" id="FechaFinC" class="form-control" placeholder="Fecha de Graduación" disabled>
-              </div>
-              <div class="form-group">
-                <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
-                <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarComp()">Editar</button>
-                <a onclick="DeshabilitarComp()" id="Cerrar1" hidden>&#10006;</a>
+            <div class="form-group">
+                <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarFormal()">Guardar</button>
+                <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarFormal()">Añadir</button>
+                <a onclick="DeshabilitarFormal()" id="CerrarF" hidden>&#10006;</a>
             </div>
-              <h4 class="fw-light py-3 text-secondary">Información Academica Idioma</h4>
-              <div class="form-group col-md-3">
-                <label for="Idioma">Idioma:</label>
-                <input type="text" name="Idioma" id="Idioma" class="form-control" placeholder="Idioma" disabled>
-              </div>
-              <div class="form-group col-md-3">
-                  <label for="Nivel">Nivel:</label>
-                  <input type="text" name="Nivel" id="Nivel" class="form-control" placeholder="Nivel" disabled>
-              </div>
-              <div class="form-group">
-                <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
-                <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarComp()">Editar</button>
-                <a onclick="DeshabilitarComp()" id="Cerrar2" hidden>&#10006;</a>
+        </form>
+
+        <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
+            action="javascript:void(0);" method="POST">
+            
+                <h4 class="fw-light py-3 text-secondary">Información Academica Complementaria</h4>
+                <div id="FormComp" hidden class="form-row row g-2">
+                <div class="form-group col-md-3">
+                    <label for="Institucion">Institución:</label>
+                    <input type="text" name="Institucion" id="InstitucionC" class="form-control"
+                        placeholder="Institución" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Acreditacion">Acreditación:</label>
+                    <input type="text" name="Acreditacion" id="AcreditacionC" class="form-control"
+                        placeholder="Acreditación" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="FechaFin">Fecha en la que finalizó:</label>
+                    <input type="date" name="FechaFin" id="FechaFinC" class="form-control"
+                        placeholder="Fecha de Graduación" disabled>
+                </div>
             </div>
-        </div>  
+                <div>
+                    <table id="TableComp" class="table table-responsive">
+                        <tr>
+                            <th>Acciones</th>
+                            <th>Institución</th>
+                            <th>Acreditación</th>
+                            <th>Fecha en la que finalizó</th>
+                        </tr>
+                        <tbody id="BodyComp"></tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarComp()">Guardar</button>
+                    <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarComp()">Añadir</button>
+                    <a onclick="DeshabilitarComp()" id="CerrarC" hidden>&#10006;</a>
+                </div>
+            </form>
+
+            <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
+            action="javascript:void(0);" method="POST">
+                <h4 class="fw-light py-3 text-secondary">Información Academica Idioma</h4>
+                <div class="form-row row g-2" id="FormIdioma" hidden>
+                <div class="form-group col-md-3">
+                    <label for="Idioma">Idioma:</label>
+                    <input type="text" name="Idioma" id="Idioma" class="form-control" placeholder="Idioma" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Nivel">Nivel:</label>
+                    <input type="text" name="Nivel" id="Nivel" class="form-control" placeholder="Nivel" disabled>
+                </div>     
+            </div>     
+                <div>
+                    <table id="TableIdioma" class="table table-responsive">
+                        <tr>
+                            <th>Acciones</th>
+                            <th>Idioma</th>
+                            <th>Nivel</th>
+                        </tr>
+                        <tbody id="BodyIdioma"></tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success mb-3" onclick="GuardarIdioma()">Guardar</button>
+                    <button class="btn btn-secondary mb-3" onclick="HabilitarIdioma()">Añadir</button>
+                    <a onclick="DeshabilitarIdioma()" id="CerrarI" hidden>&#10006;</a>
+                </div>          
         </form>
     </fieldset>
     <input type="text" id="IdPersona" disabled hidden>
     <script src="js/MainEngine.js"></script>
     <script>
         FillMenuBar();
-        FillInfoAcaFormal();
-        FillInfoAcaComp();
-        FillInfoAcaIdioma();
+        //FillInfoAcaFormal();
+        //FillInfoAcaComp();
+        //FillInfoAcaIdioma();
+        FillTableComp();
+        FillTableFormal();
+        FillTableIdioma();
         SetId();
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
-        btn.addEventListener('click', e =>{
+        btn.addEventListener('click', e => {
             menu.classList.toggle("menu-expanded");
-            menu.classList.toggle("menu-collapsed");                                            
+            menu.classList.toggle("menu-collapsed");
             document.querySelector('body').classList.toggle('body-expanded');
         });
-    </script>  
-    <script src="js/InfoLaboral.js"></script>
+    </script>
+    <script src="js/Admin.js"></script>
 </body>
+
 </html>
