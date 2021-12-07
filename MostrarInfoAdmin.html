@@ -23,9 +23,6 @@
 </style>
 
 <body>
-    <!--<script src="js/InfoPersonal.js"></script>
-    <script src="js/InfoAcademica.js"></script>
-    <script src="js/InfoLaboral.js"></script>-->
     <script src="js/Admin.js"></script>
     <script src="js/MainEngine.js"></script>
     <script>
@@ -74,11 +71,16 @@
                 <div class="item separator">
 
                 </div>
-
+                <div class="item">
+                    <a href="./BuscarPersonalAdmin.html">
+                        <div class="icon"><img src="./img/education.png" alt=""></div>
+                        <div class="title"><span>Mostrar y Editar Personal</span></div>
+                    </a>
+                </div>
                 <div class="item separator">
                 </div>
                 <div class="item" id="item-salir">
-                    <a href="#">
+                    <a href="index.html">
                         <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
                         <div class="title"><span>Cerrar sesion</span></div>
                     </a>
@@ -386,7 +388,7 @@
                     </div>
                 </form>
             </div>
-            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch">
+            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch" hidden>
                 <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
                 <tr>
                     <th>Acciones</th>
@@ -457,10 +459,11 @@
             menu.classList.toggle("menu-collapsed");
             SetId();
             FillMenuBar();
-            GetIdNewCliente();
-            SetIdNewCliente();
             console.log(p);
             document.querySelector('body').classList.toggle('body-expanded');
+        });
+        $(document).ready(function(){
+            GetIdNewCliente();
         });
     </script>
 </body>

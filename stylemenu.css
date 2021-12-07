@@ -15,6 +15,19 @@ body{
     padding: 0;
     margin: 0;
     margin-left: var(--width-collapsed);
+    /*background: url(./img/logomenu.png) no-repeat center;*/
+    background-attachment: fixed;
+
+    background-color: #e52d27;
+    background-color: -webkit-linear-gradient(to right, #b31217, #e52d27);
+    background-color: linear-gradient(to right, #b31217, #e52d27);
+
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    margin-left: var(--width-collapsed);
 }
 
 .body-expanded {
@@ -222,4 +235,6 @@ body{
     width: 100px;
 }
 
-
+#Buscar{
+    margin: 5px;
+}

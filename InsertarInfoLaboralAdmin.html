@@ -73,7 +73,12 @@
                 <div class="item separator">
 
                 </div>
-
+                <div class="item">
+                    <a href="./BuscarPersonalAdmin.html">
+                        <div class="icon"><img src="./img/education.png" alt=""></div>
+                        <div class="title"><span>Mostrar y Editar Personal</span></div>
+                    </a>
+                </div>
                 <div class="item" id="item-salir">
                     <a href="./index.html">
                         <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
@@ -82,9 +87,8 @@
                 </div>
             </div>
         </div>
-
-        <fieldset>
-
+    </div>
+        <div class="container">
             <form action="javascript:void(0);" method="post" onsubmit="MeasuredBoy()"
                 class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch align-items-center">
                 <h3 class="fw-bold text-center py-3 text-secondary">Informacion Laboral</h3>
@@ -99,17 +103,18 @@
                         <input type="date" name="FechaInicio" id="FechaInicio" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="FechaFin">Fecha en la que finalizo</label>
+                        <label for="FechaFin">Fecha en la que finalizó</label>
                         <input type="date" name="FechaFin" id="FechaFin" class="form-control">
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Guardar" class="btn btn-success">
                         <input type="button" onclick="MostrarResultado()" value="Finalizar" class="btn btn-dark">
+                        <input type="button" class="btn btn-secondary" value="Traer Id" onclick="GetIdNewCliente()">
                     </div>
                 </div>
             </form>
-        </fieldset>
-    </div>
+        </div>
+    
     <input type="text" id="IdPersona" disabled hidden>
     <input type="text" id="IdNewCliente" disabled hidden>
     <script src="js/MainEngine.js"></script>
@@ -122,10 +127,10 @@
             SetId();
             FillMenuBar();
             GetIdNewCliente();
-            SetIdNewCliente(); 
-            var p = localStorage.getItem('IdCliente');
-            console.log(p);
             document.querySelector('body').classList.toggle('body-expanded');
+        });
+        $(document).ready(function(){
+            GetIdNewCliente();
         });
     </script>
 </body>

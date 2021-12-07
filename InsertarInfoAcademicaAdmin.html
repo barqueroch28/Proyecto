@@ -76,21 +76,27 @@
             <div class="item separator">
 
             </div>
-
+            <div class="item">
+                <a href="./BuscarPersonalAdmin.html">
+                    <div class="icon"><img src="./img/education.png" alt=""></div>
+                    <div class="title"><span>Mostrar y Editar Personal</span></div>
+                </a>
+            </div>
             <div class="item separator">
             </div>
             <div class="item" id="item-salir">
-                <a href="#">
+                <a href="index.html">
                     <div class="icon"><img src="./img/salirlogo.png" alt=""></div>
                     <div class="title"><span>Cerrar sesion</span></div>
                 </a>
             </div>
         </div>
     </div>
-    <fieldset>
-        <h3 class="fw-light py-3 text-secondary">Información Académica Formal</h3>
+    <div class="container">
+        
         <form action="javascript:void(0);" method="POST" onsubmit="BigGuardar()"
             class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch align-items-center">
+            <h3 class="fw-light py-3 text-secondary">Información Académica Formal</h3>
             <div class="form-row row g-2">
                 <div class="form-group col-md-3">
                     <label for="Institucion">Institucion: </label>
@@ -134,19 +140,17 @@
                 <div class="form-group">
                     <input type="submit" value="Guardar" class="btn btn-dark">
                     <input type="button" value="Siguiente" onclick="NextPage()" class="btn btn-success">     
-                    <input type="button" value="Traer Id" class="btn btn-secondary" onclick="GetYSetId()">              
+                    <input type="button" value="Traer Id" class="btn btn-secondary" onclick="GetIdNewCliente()">              
                 </div>
             </div>
         </form>
-    </fieldset>
+    </div>
     <input type="text" id="IdPersona" disabled hidden>
     <input type="text" id="IdNewCliente" disabled hidden>
     <script>
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
-        //GetIdNewCliente();
         SetId();
-        SetIdNewCliente();
         FillMenuBar();
         
         var p = document.getElementById('IdNewCliente');
@@ -154,13 +158,12 @@
         //alert(p);
         btn.addEventListener('click', e => {
             menu.classList.toggle("menu-expanded");
-            menu.classList.toggle("menu-collapsed");
-            //GetIdNewCliente();
-               
-            
+            menu.classList.toggle("menu-collapsed");          
             document.querySelector('body').classList.toggle('body-expanded');
         });
-        
+        $(document).ready(function(){
+            GetIdNewCliente();
+        });
     </script>
 
 </body>

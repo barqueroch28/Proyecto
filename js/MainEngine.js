@@ -477,7 +477,7 @@ function GuardarComp(){
     acreditacion: acr,
     fechaGraduacion: fecha,
     informacionPersonalId: IdPersona
-  }
+  };
   fetch(uri, {
     method: 'POST',
     headers: {

@@ -1,7 +1,7 @@
 let itemsDireccion = [];
 let itemsPersonal = [];
 
-function GuardarInfoPersonal(){
+function GuardarInfoPersonal() {
     const nombre = document.getElementById('Nombre').value;
     const primerApe = document.getElementById('1Apellido').value;
     const segundoApe = document.getElementById('2Apellido').value;
@@ -26,34 +26,33 @@ function GuardarInfoPersonal(){
         TipoSangre: tipoSangre.trim(),
         CuentaBancaria: cuentaBancaria.trim(),
         BancoEspecifico: bancoEspecifico.trim(),
-        Contrasena: contrasena.trim()                    
-        };
+        Contrasena: contrasena.trim()
+    };
     fetch(uri, {
         method: 'POST',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     })
-    .then(response => response.json())
-    .then(()=>
-    {
-        nombre.value='';
-        primerApe.value='';
-        segundoApe.value='';
-        cedula.value='';
-        fechaNacimiento.value='';
-        estadoCivil.value='';
-        numeroAsegurado.value='';
-        tipoSangre.value='';
-        cuentaBancaria.value='';
-        bancoEspecifico.value='';
-        contrasena.value='';
-    })
-    .catch(e => console.error('no se pudo guardar', e));
-    }
-function GuardarInfoDireccion(){
+        .then(response => response.json())
+        .then(() => {
+            nombre.value = '';
+            primerApe.value = '';
+            segundoApe.value = '';
+            cedula.value = '';
+            fechaNacimiento.value = '';
+            estadoCivil.value = '';
+            numeroAsegurado.value = '';
+            tipoSangre.value = '';
+            cuentaBancaria.value = '';
+            bancoEspecifico.value = '';
+            contrasena.value = '';
+        })
+        .catch(e => console.error('no se pudo guardar', e));
+}
+function GuardarInfoDireccion() {
     const provincia = document.getElementById('Provincia').value;
     const canton = document.getElementById('Canton').value;
     const distrito = document.getElementById('Distrito').value;
@@ -68,16 +67,16 @@ function GuardarInfoDireccion(){
     fetch(uri, {
         method: 'POST',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     })
-    .then(response => response.json())
-    .then(()=> GetIdNewCliente())
-    .catch(e => console.error('No se guardo info direccion', e));
+        .then(response => response.json())
+        .then(() => GetIdNewCliente())
+        .catch(e => console.error('No se guardo info direccion', e));
 }
-function MostrarInfoPersonal(data){
+function MostrarInfoPersonal(data) {
     let button = document.createElement('button');
     let table = document.getElementById('TablaPersonal');
     document.getElementById('TituloPersonal').innerHTML = 'Informacion Personal';
@@ -95,7 +94,7 @@ function MostrarInfoPersonal(data){
 
         let tr = table.insertRow();
 
-        let td01= tr.insertCell(0);
+        let td01 = tr.insertCell(0);
         td01.appendChild(editItem);
         let td02 = tr.insertCell(1);
         td02.appendChild(deleteItem);
@@ -135,22 +134,93 @@ function MostrarInfoPersonal(data){
     });
     itemsPersonal = data;
 }
-function GetInfoPersonal(){
+
+function MostrarInfoPersonalBusqueda(data) {
+    let button = document.createElement('button');
+    let table = document.getElementById('TablaPersonal');
+    document.getElementById('TituloPersonal').innerHTML = 'Informacion Personal';
+    table.innerHTML = '';
+    console.log(data);
+    let tablaPrincipal = document.getElementById('TablaPInfo');
+    document.getElementById('IdResultado').value = data.id;
+    tablaPrincipal.hidden = false;
+    let editItem = button.cloneNode(false);
+    editItem.innerHTML = 'Editar';
+    //editItem.setAttribute('onclick', `MostrarEditarPersonalBusqueda(${data})`);
+    //editItem.addEventListener("click", MostrarEditarPersonalBusqueda(data));
+
+    let deleteItem = button.cloneNode(false);
+    deleteItem.innerHTML = 'Eliminar';
+    deleteItem.setAttribute('onclick', `EliminarMasivo(${data.id})`);
+
+    let tr = table.insertRow();
+
+    let td01 = tr.insertCell(0);
+    td01.appendChild(editItem);
+    let td02 = tr.insertCell(1);
+    td02.appendChild(deleteItem);
+    let td1 = tr.insertCell(2);
+    let nom = document.createTextNode(data.nombre);
+    td1.appendChild(nom);
+    let td2 = tr.insertCell(3);
+    let ape1 = document.createTextNode(data.primerApellido);
+    td2.appendChild(ape1);
+    let td3 = tr.insertCell(4);
+    let ape2 = document.createTextNode(data.segundoApellido);
+    td3.appendChild(ape2);
+    let td4 = tr.insertCell(5);
+    let ced = document.createTextNode(data.cedula);
+    td4.appendChild(ced);
+    let td5 = tr.insertCell(6);
+    let nac = document.createTextNode(data.fechaNacimiento);
+    td5.appendChild(nac);
+    let td6 = tr.insertCell(7);
+    let est = document.createTextNode(data.estadoCivil);
+    td6.appendChild(est);
+    let td7 = tr.insertCell(8);
+    let numA = document.createTextNode(data.numeroAsegurado);
+    td7.appendChild(numA);
+    let td8 = tr.insertCell(9);
+    let san = document.createTextNode(data.tipoSangre);
+    td8.appendChild(san);
+    let td9 = tr.insertCell(10);
+    let iban = document.createTextNode(data.cuentaBancaria);
+    td9.appendChild(iban);
+    let td10 = tr.insertCell(11);
+    let ban = document.createTextNode(data.bancoEspecifico);
+    td10.appendChild(ban);
+    let td11 = tr.insertCell(12);
+    let con = document.createTextNode(data.contrasena);
+    td11.appendChild(con);
+
+    itemsPersonal = data;
+}
+
+function GetInfoPersonal() {
     let uri = 'https://localhost:44351/api/InformacionPersonal';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoPersonal(data))
-    .catch(error => console.error('No se pudo traer la info personal', error));
+        .then(response => response.json())
+        .then(data => MostrarInfoPersonal(data))
+        .catch(error => console.error('No se pudo traer la info personal', error));
 }
-function EliminarPersonal(id){
+
+function GetInfoPersonalBusqueda() {
+    let uri = 'https://localhost:44351/api/InformacionPersonal';
+    fetch(uri)
+        .then(response => response.json())
+        .then(data => MostrarInfoPersonalBusqueda(data))
+        .catch(error => console.error('No se pudo traer la info personal', error));
+}
+
+function EliminarPersonal(id) {
     let uri = 'https://localhost:44351/api/InformacionPersonal';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
     })
-    .then(()=> GetInfoPersonal())
-    .catch(error => console.error('No se pudo eliminar la info Personal', error));
+        .then(() => GetInfoPersonal())
+        .catch(error => console.error('No se pudo eliminar la info Personal', error));
 }
-function EditarPersonal(){
+function EditarPersonal() {
     const uri = 'https://localhost:44351/api/InformacionPersonal';
     const id = document.getElementById('IdInfoPersonal').value;
     const nombre = document.getElementById('editNombre').value;
@@ -176,23 +246,65 @@ function EditarPersonal(){
         tipoSangre: tipoSangre,
         cuentaBancaria: cuentaBancaria,
         bancoEspecifico: bancoEspecifico,
-        contrasena: contrasena     
+        contrasena: contrasena
     };
     fetch(`${uri}/${id}`, {
         method: 'PUT',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     }).then(() => GetInfoPersonal())
-    .catch(error => console.error('no se pudo actualizar la info personal', error));
+        .catch(error => console.error('no se pudo actualizar la info personal', error));
     CerrarFormPersonal();
     return false;
 }
-function MostrarEditarPersonal(id){
+
+function EditarPersonalBusqueda() {
+    const uri = 'https://localhost:44351/api/InformacionPersonal';
+    const id = document.getElementById('IdInfoPersonal').value;
+    const nombre = document.getElementById('editNombre').value;
+    const primerApe = document.getElementById('edit1Apellido').value;
+    const segundoApe = document.getElementById('edit2Apellido').value;
+    const cedula = document.getElementById('editCedula').value;
+    const fechaNac = document.getElementById('editFechaNacimiento').value;
+    const estadoCivil = document.getElementById('editEstadoCivil').value;
+    const numeroAsegurado = document.getElementById('editNumeroAsegurado').value;
+    const tipoSangre = document.getElementById('editTipoSangre').value;
+    const cuentaBancaria = document.getElementById('editCuentaBancaria').value;
+    const bancoEspecifico = document.getElementById('editBancoEspecifico').value;
+    const contrasena = document.getElementById('editContrasena').value;
+    let item = {
+        id: id,
+        nombre: nombre,
+        primerApellido: primerApe,
+        segundoApellido: segundoApe,
+        cedula: cedula,
+        fechaNacimiento: fechaNac,
+        numeroAsegurado: numeroAsegurado,
+        estadoCivil: estadoCivil,
+        tipoSangre: tipoSangre,
+        cuentaBancaria: cuentaBancaria,
+        bancoEspecifico: bancoEspecifico,
+        contrasena: contrasena
+    };
+    fetch(`${uri}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    }).then(() => GetInfoPersonalBusqueda())
+        .catch(error => console.error('no se pudo actualizar la info personal', error));
+    CerrarFormPersonal();
+    return false;
+}
+
+function MostrarEditarPersonal(id) {
     document.getElementById('FormEditPersonal').hidden = false;
-    let item = itemsPersonal.find(item => item.idInfoPersonal === id);
+    let item = itemsPersonal.find(item => item.id === id);
     document.getElementById('IdInfoPersonal').value = item.id;
     document.getElementById('editNombre').value = item.nombre;
     document.getElementById('edit1Apellido').value = item.primerApellido;
@@ -206,10 +318,27 @@ function MostrarEditarPersonal(id){
     document.getElementById('editBancoEspecifico').value = item.bancoEspecifico;
     document.getElementById('editContrasena').value = item.contrasena;
 }
-function CerrarFormPersonal(){
+
+function MostrarEditarPersonalBusqueda(data) {
+    document.getElementById('FormEditPersonal').hidden = false;
+    document.getElementById('IdInfoPersonal').value = data.id;
+    document.getElementById('editNombre').value = data.nombre;
+    document.getElementById('edit1Apellido').value = data.primerApellido;
+    document.getElementById('edit2Apellido').value = data.segundoApellido;
+    document.getElementById('editCedula').value = data.cedula;
+    document.getElementById('editFechaNacimiento').value = data.fechaNacimiento;
+    document.getElementById('editEstadoCivil').value = data.estadoCivil;
+    document.getElementById('editNumeroAsegurado').value = data.numeroAsegurado;
+    document.getElementById('editTipoSangre').value = data.tipoSangre;
+    document.getElementById('editCuentaBancaria').value = data.cuentaBancaria;
+    document.getElementById('editBancoEspecifico').value = data.bancoEspecifico;
+    document.getElementById('editContrasena').value = data.contrasena;
+}
+
+function CerrarFormPersonal() {
     document.getElementById('FormEditPersonal').hidden = true;
 }
-function MostrarInfoDireccion(data){
+function MostrarInfoDireccion(data) {
     let tabla = document.getElementById('TablaDireccion');
     let tablaPrincipal = document.getElementById('TablaPDire');
     document.getElementById('TituloDireccion').innerHTML = 'Informacion Direccion';
@@ -217,7 +346,7 @@ function MostrarInfoDireccion(data){
     tabla.innerHTML = '';
     tablaPrincipal.hidden = false;
     data.forEach(item => {
-        
+
         let editItem = button.cloneNode(false);
         editItem.innerHTML = 'Editar';
         editItem.setAttribute('onclick', `MostrarEditarDireccion(${item.idInformacionDireccion})`);
@@ -230,7 +359,7 @@ function MostrarInfoDireccion(data){
         let td01 = tr.insertCell(0);
         td01.appendChild(editItem);
         /*let td02 = tr.insertCell(1);
-        td02.appendChild(deleteItem);*/  
+        td02.appendChild(deleteItem);*/
         let td1 = tr.insertCell(1);
         let pro = document.createTextNode(item.provincia);
         td1.appendChild(pro);
@@ -246,21 +375,53 @@ function MostrarInfoDireccion(data){
     });
     itemsDireccion = data;
 }
-function GetInfoDireccion(){
+
+function MostrarInfoDireccionBusqueda(data) {
+    let tabla = document.getElementById('TablaDireccion');
+    let tablaPrincipal = document.getElementById('TablaPDire');
+    document.getElementById('TituloDireccion').innerHTML = 'Informacion Direccion';
+    const button = document.createElement('button');
+    tabla.innerHTML = '';
+    tablaPrincipal.hidden = false;
+    let editItem = button.cloneNode(false);
+    editItem.innerHTML = 'Editar';
+    editItem.setAttribute('onclick', `MostrarEditarDireccion(${data.idInformacionDireccion})`);
+
+    let tr = tabla.insertRow();
+    let td01 = tr.insertCell(0);
+    td01.appendChild(editItem);
+    /*let td02 = tr.insertCell(1);
+    td02.appendChild(deleteItem);*/
+    let td1 = tr.insertCell(1);
+    let pro = document.createTextNode(data.provincia);
+    td1.appendChild(pro);
+    let td2 = tr.insertCell(2);
+    let can = document.createTextNode(data.canton);
+    td2.appendChild(can);
+    let td3 = tr.insertCell(3);
+    let dis = document.createTextNode(data.distrito);
+    td3.appendChild(dis);
+    let td4 = tr.insertCell(4);
+    let dir = document.createTextNode(data.direccionExacta);
+    td4.appendChild(dir);
+    itemsDireccion = data;
+}
+
+function GetInfoDireccion() {
     let uri = 'https://localhost:44351/api/InfoDireccion';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoDireccion(data))
-    .catch(error => console.error('No se pudo traer la informacion de direccion', error));
+        .then(response => response.json())
+        .then(data => MostrarInfoDireccion(data))
+        .catch(error => console.error('No se pudo traer la informacion de direccion', error));
 }
-function EliminarDireccion(id){
+function EliminarDireccion(id) {
     let uri = 'https://localhost:44351/api/InfoDireccion';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
-    }).then(()=> GetInfoDireccion())
-    .catch(error => console.error('No se pudo eliminar la direccion', error));
+    }).then(() => GetInfoDireccion())
+        .catch(error => console.error('No se pudo eliminar la direccion', error));
 }
-function MostrarEditarDireccion(id){
+function MostrarEditarDireccion(id) {
     let item = itemsDireccion.find(item => item.idInformacionDireccion === id);
     document.getElementById('IdInfoDireccion').value = item.idInformacionDireccion;
     document.getElementById('editProvincia').value = item.provincia;
@@ -269,7 +430,7 @@ function MostrarEditarDireccion(id){
     document.getElementById('editDireccion').value = item.direccionExacta;
     document.getElementById('FormEditarDireccion').hidden = false;
 }
-function EditarDireccion(){
+function EditarDireccion() {
     let uri = 'https://localhost:44351/api/InfoDireccion';
     let id = document.getElementById('IdInfoDireccion').value;
     let pro = document.getElementById('editProvincia').value;
@@ -283,112 +444,110 @@ function EditarDireccion(){
         distrito: dis,
         direccionExacta: dir
     };
-    fetch(`${uri}/${id}` ,{
+    fetch(`${uri}/${id}`, {
         method: 'PUT',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     })
-    .then(()=> GetInfoDireccion())
-    .catch(error => console.error('No se actualizo la informacion direcion', error));
+        .then(() => GetInfoDireccion())
+        .catch(error => console.error('No se actualizo la informacion direcion', error));
     CerrarFormDireccion();
     return false;
 }
-function CerrarFormDireccion(){
+function CerrarFormDireccion() {
     document.getElementById('FormEditarDireccion').hidden = true;
 }
 
-/*Info Academica*/ 
+/*Info Academica*/
 
 let itemsFormal = [];
 let itemsComp = [];
 let itemsIdioma = [];
 
 
-function GuardarAcademicaFormal(){
+function GuardarAcademicaFormal() {
     let institucion = document.getElementById('Institucion1').value;
     let acreditacion = document.getElementById('Acreditacion1').value;
     let fechaGraduacion = document.getElementById('FechaGraduacion1').value;
-    let IdPersona = document.getElementById('IdNewCliente').value;
+    let IdPersona = localStorage.getItem("IdCliente");
     const uri = 'https://localhost:44351/api/InfoAcademicaFormal';
     const item = {
-        Institucion : institucion.trim(),
-        Acreditacion : acreditacion.trim(),
+        Institucion: institucion.trim(),
+        Acreditacion: acreditacion.trim(),
         FechaGraduacion: fechaGraduacion.trim(),
         informacionPersonalId: IdPersona
     };
-    fetch(uri, 
-    {
-        method : 'POST',
-        headers : {
-            'Accept':'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(item)
-    }).then(response=> response.json()).then(()=> 
-    {
-        institucion.value = '';
-        acreditacion.value = '';
-        fechaGraduacion.value = '';
-    }).catch(error => console.error('No se guardo', error));
+    fetch(uri,
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }).then(response => response.json()).then(() => {
+            institucion.value = '';
+            acreditacion.value = '';
+            fechaGraduacion.value = '';
+        }).catch(error => console.error('No se guardo', error));
 }
 
-function GuardarAcademicaComp(){
+function GuardarAcademicaComp() {
     let institucion = document.getElementById('Institucion2').value;
     let acreditacion = document.getElementById('Acreditacion2').value;
     let fechaGraduacion = document.getElementById('FechaGraduacion2').value;
-    const IdPersona = document.getElementById('IdNewCliente').value;
+    const IdPersona = localStorage.getItem("IdCliente");
     const uri = 'https://localhost:44351/api/InfoAcademicaComp';
     const item = {
-        Institucion : institucion.trim(),
-        Acreditacion : acreditacion.trim(),
-        FechaGraduacion : fechaGraduacion.trim(),
+        Institucion: institucion.trim(),
+        Acreditacion: acreditacion.trim(),
+        FechaGraduacion: fechaGraduacion.trim(),
         informacionPersonalId: IdPersona
     };
-    fetch(uri, 
-    {
-        method : 'POST',
-        headers : {
-            'Accept' : 'application/json',
-            'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify(item)
-    }).then(response=> response.json()).then(()=>
-    {
-        institucion.value = '';
-        acreditacion.value = '';
-        fechaGraduacion.value = '';
-    }).catch(error => console.error('no se guardo', error));
+    fetch(uri,
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }).then(response => response.json()).then(() => {
+            institucion.value = '';
+            acreditacion.value = '';
+            fechaGraduacion.value = '';
+        }).catch(error => console.error('no se guardo', error));
 }
-function GuardarAcademicaIdioma(){        
+function GuardarAcademicaIdioma() {
     let idioma = document.getElementById('Idioma1').value;
     let nivel = document.getElementById('Nivel1').value;
-    const IdPersona = document.getElementById('IdNewCliente').value;
+    const IdPersona = localStorage.getItem("IdCliente");
     const uri = 'https://localhost:44351/api/InfoAcademicaIdioma';
     const item = {
         Idioma: idioma.trim(),
         Nivel: nivel.trim(),
         informacionPersonalId: IdPersona
     };
-    fetch(uri, 
-    {
-        method : 'POST',
-        headers : {
-            'Accept' : 'application/json',
-            'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify(item)
-    })
-    .then(response => response.json())
-    .then(()=> {
+    fetch(uri,
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+        .then(response => response.json())
+        .then(() => {
             idioma.value = '';
             nivel.value = '';
         })
-    .catch(error => console.error('error al ingresar', error));
+        .catch(error => console.error('error al ingresar', error));
 }
-function MostrarInfoAcademicaFormal(data){
+function MostrarInfoAcademicaFormal(data) {
     let button = document.createElement('button');
     let tablaPrincipal = document.getElementById('tablaInfoFormal');
     const table = document.getElementById('InfoFormal');
@@ -401,18 +560,11 @@ function MostrarInfoAcademicaFormal(data){
         editarItem.innerHTML = 'Editar';
         editarItem.setAttribute('onclick', `MostrarEditarInfoFormal(${item.id})`);
 
-       /* let deleteItem = button.cloneNode(false);
-        deleteItem.innerHTML = 'Eliminar';
-        deleteItem.setAttribute('onclick', `EliminarInfoFormal(${item.idInformacionAcademicaFormal})`);
-        */
         let tr = table.insertRow();
-        
+
         let td01 = tr.insertCell(0);
         td01.appendChild(editarItem);
 
-        /*let td02 = tr.insertCell(1);
-        td02.appendChild(deleteItem);
-        */
         let td1 = tr.insertCell(1);
         let inst = document.createTextNode(item.institucion);
         td1.appendChild(inst);
@@ -427,22 +579,23 @@ function MostrarInfoAcademicaFormal(data){
     });
     itemsFormal = data;
 }
-function GetInfoFormal(){
+
+function GetInfoFormal() {
     const uri = 'https://localhost:44351/api/InfoAcademicaFormal';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoAcademicaFormal(data))
-    .catch(e => console.error('No se pudo mostrar', e));
+        .then(response => response.json())
+        .then(data => MostrarInfoAcademicaFormal(data))
+        .catch(e => console.error('No se pudo mostrar', e));
 }
-function EliminarInfoFormal(id){
+function EliminarInfoFormal(id) {
     const uri = 'https://localhost:44351/api/InfoAcademicaFormal';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
     })
-    .then(()=> GetInfoFormal())
-    .catch(error => console.error('No se pudo eliminar', error));
+        .then(() => GetInfoFormal())
+        .catch(error => console.error('No se pudo eliminar', error));
 }
-function MostrarEditarInfoFormal(id){//cambiar
+function MostrarEditarInfoFormal(id) {//cambiar
     const item = itemsFormal.find(item => item.id === id);
     document.getElementById('idInfoFormal').value = item.id;
     document.getElementById('EditInstF').value = item.institucion;
@@ -450,7 +603,7 @@ function MostrarEditarInfoFormal(id){//cambiar
     document.getElementById('EditFinF').value = item.fechaGraduacion;
     document.getElementById('EditInfoFormal').hidden = false;
 }
-function EditarInfoFormal(){//cambiar
+function EditarInfoFormal() {//cambiar
     const uri = 'https://localhost:44351/api/InfoAcademicaFormal';
     const id = document.getElementById('idInfoFormal').value;
     //alert(id);
@@ -472,23 +625,23 @@ function EditarInfoFormal(){//cambiar
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
-    }).then(()=> GetInfoFormal())
-    .catch(error => console.error('no se pudo actualizar la info formal', error));
+    }).then(() => GetInfoFormal())
+        .catch(error => console.error('no se pudo actualizar la info formal', error));
     CerrarFormFormal();
     return false;
 }
-function CerrarFormFormal(){
+function CerrarFormFormal() {
     document.getElementById('EditInfoFormal').hidden = true;
 }
-function MostrarInfoAcademicaComplementaria(data){
+function MostrarInfoAcademicaComplementaria(data) {
     const table = document.getElementById('InfoComp');
     document.getElementById('tituloComp').innerHTML = 'Informacion Academica Complementaria';
     let boton = document.createElement('button');
     let tablaPrincipal = document.getElementById('tablaInfoComp');
     tablaPrincipal.hidden = false;
-    table.innerHTML='';
+    table.innerHTML = '';
     data.forEach(item => {
-        
+
         let editarItem = boton.cloneNode(false);
         editarItem.innerHTML = 'Editar';
         editarItem.setAttribute('onclick', `MostrarEditarInfoComp(${item.id})`);
@@ -518,22 +671,23 @@ function MostrarInfoAcademicaComplementaria(data){
     });
     itemsComp = data;
 }
-function GetInfoComp(){
+
+function GetInfoComp() {
     const uri = 'https://localhost:44351/api/InfoAcademicaComp';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoAcademicaComplementaria(data))
-    .catch(e => console.error('no se pudo mostrar la complementaria', e));
+        .then(response => response.json())
+        .then(data => MostrarInfoAcademicaComplementaria(data))
+        .catch(e => console.error('no se pudo mostrar la complementaria', e));
 }
-function EliminarInfoComp(id){
+function EliminarInfoComp(id) {
     let uri = 'https://localhost:44351/api/InfoAcademicaComp';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
     })
-    .then(() => GetInfoComp())
-    .catch(error => console.error('no se elimino', error));
+        .then(() => GetInfoComp())
+        .catch(error => console.error('no se elimino', error));
 }
-function MostrarEditarInfoComp(id){
+function MostrarEditarInfoComp(id) {
     let item = itemsComp.find(item => item.id === id);
     document.getElementById('idInfoComp').value = item.id;
     document.getElementById('EditInstC').value = item.institucion;
@@ -541,7 +695,7 @@ function MostrarEditarInfoComp(id){
     document.getElementById('EditFinC').value = item.fechaGraduacion;
     document.getElementById('EditInfoComp').hidden = false;
 }
-function EditarInfoComp(){
+function EditarInfoComp() {
     const uri = 'https://localhost:44351/api/InfoAcademicaComp';
     const id = document.getElementById('idInfoComp').value;
     const institucion = document.getElementById('EditInstC').value;
@@ -562,15 +716,15 @@ function EditarInfoComp(){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
-    }).then(()=> GetInfoComp())
-    .catch(error => console.error('no se pudo actualizar la info formal', error));
+    }).then(() => GetInfoComp())
+        .catch(error => console.error('no se pudo actualizar la info formal', error));
     CerrarFormComp();
     return false;
 }
-function CerrarFormComp(){
+function CerrarFormComp() {
     document.getElementById('EditInfoComp').hidden = true;
 }
-function MostrarInfoAcademicaIdioma(data){
+function MostrarInfoAcademicaIdioma(data) {
     const table = document.getElementById('InfoIdioma');
     let button = document.createElement('button');
     document.getElementById('tituloIdioma').innerHTML = 'Informacion Academica Idioma';
@@ -585,16 +739,9 @@ function MostrarInfoAcademicaIdioma(data){
         editarItem.innerHTML = 'Editar';
         editarItem.setAttribute('onclick', `MostrarEditarInfoIdioma(${item.id})`);
 
-        /*let deleteItem = button.cloneNode(false);
-        deleteItem.innerHTML = 'Eliminar';
-        deleteItem.setAttribute('onclick', `EliminarIdioma(${item.idInformacionAcademicaIdioma})`);
-        */
         let td01 = tr.insertCell(0);
         td01.appendChild(editarItem);
 
-        /*let td02 = tr.insertCell(1);
-        td02.appendChild(deleteItem);
-        */
         let td1 = tr.insertCell(1);
         let idioma = document.createTextNode(item.idioma);
         td1.appendChild(idioma);
@@ -605,29 +752,29 @@ function MostrarInfoAcademicaIdioma(data){
     });
     itemsIdioma = data;
 }
-function GetInfoIdioma(){
-    const uri ='https://localhost:44351/api/InfoAcademicaIdioma';
+function GetInfoIdioma() {
+    const uri = 'https://localhost:44351/api/InfoAcademicaIdioma';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoAcademicaIdioma(data))
-    .catch(e => console.error('No se pudo traer info idioma', e));
+        .then(response => response.json())
+        .then(data => MostrarInfoAcademicaIdioma(data))
+        .catch(e => console.error('No se pudo traer info idioma', e));
 }
-function EliminarIdioma(id){
+function EliminarIdioma(id) {
     let uri = 'https://localhost:44351/api/InfoAcademicaIdioma';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
     })
-    .then(() => GetInfoIdioma())
-    .catch(error => console.error('no se elimino', error));
+        .then(() => GetInfoIdioma())
+        .catch(error => console.error('no se elimino', error));
 }
-function MostrarEditarInfoIdioma(id){
+function MostrarEditarInfoIdioma(id) {
     let item = itemsIdioma.find(item => item.id === id);
     document.getElementById('IdInfoIdioma').value = item.id;
     document.getElementById('EditIdioma').value = item.idioma;
     document.getElementById('EditNivel').value = item.nivel;
     document.getElementById('EditarInfoIdioma').hidden = false;
 }
-function EditarInfoIdioma(){
+function EditarInfoIdioma() {
     let uri = 'https://localhost:44351/api/InfoAcademicaIdioma';
     let id = document.getElementById('IdInfoIdioma').value;
     let idioma = document.getElementById('EditIdioma').value;
@@ -647,23 +794,23 @@ function EditarInfoIdioma(){
         },
         body: JSON.stringify(item)
     }).then(() => GetInfoIdioma())
-    .catch(error => console.error('No se pudo actualizar el idioma', error));
+        .catch(error => console.error('No se pudo actualizar el idioma', error));
     CerrarFormIdioma();
     return false;
 }
-function CerrarFormIdioma(){
+function CerrarFormIdioma() {
     document.getElementById('EditarInfoIdioma').hidden = true;
 }
 
 
-/*Info Laboral*/ 
+/*Info Laboral*/
 
 let itemsLaboral = [];
-function GuardarInfoLaboral(){
-    const institucion= document.getElementById('Institucion').value;
+function GuardarInfoLaboral() {
+    const institucion = document.getElementById('Institucion').value;
     const fechaIng = document.getElementById('FechaInicio').value;
     const fechaFin = document.getElementById('FechaFin').value;
-    const IdPersona = document.getElementById('IdNewCliente').value;
+    const IdPersona = localStorage.getItem("IdCliente");
     const uri = 'https://localhost:44351/api/InformacionLaboral';
     const item = {
         Institucion: institucion.trim(),
@@ -674,28 +821,28 @@ function GuardarInfoLaboral(){
     fetch(uri, {
         method: 'POST',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     })
-    .then(response => response.json())
-    .then(()=> {
-        institucion.value = '';
-        fechaIng.value='';
-        fechaFin.value='';
-    })
-    .catch(e => console.error('No se puede guardar', e));
+        .then(response => response.json())
+        .then(() => {
+            institucion.value = '';
+            fechaIng.value = '';
+            fechaFin.value = '';
+        })
+        .catch(e => console.error('No se puede guardar', e));
 }
-function MostrarInfoLaboral(data){
-    
+function MostrarInfoLaboral(data) {
+
     let tablaPrincipal = document.getElementById('tablaInfoLaboral');
     const table = document.getElementById('tableLaboral');
     let boton = document.createElement('button');
     document.getElementById('tituloLaboral').innerHTML = 'Informacion Laboral';
-    table.innerHTML ='';
+    table.innerHTML = '';
     tablaPrincipal.hidden = false;
-    
+
     data.forEach(item => {
         let editarItem = boton.cloneNode(false);
         editarItem.innerHTML = 'Editar';
@@ -727,21 +874,21 @@ function MostrarInfoLaboral(data){
     });
     itemsLaboral = data;
 }
-function GetInfoLaboral(){
+function GetInfoLaboral() {
     const uri = 'https://localhost:44351/api/InformacionLaboral';
     fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoLaboral(data))
-    .catch(e => console.error('No trajo info laboral', e));
+        .then(response => response.json())
+        .then(data => MostrarInfoLaboral(data))
+        .catch(e => console.error('No trajo info laboral', e));
 }
-function EliminarLaboral(id){
+function EliminarLaboral(id) {
     const uri = 'https://localhost:44351/api/InformacionLaboral';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
-    }).then(()=> GetInfoLaboral())
-    .catch(error => console.error('No se pudo eliminar el objeto', error));
+    }).then(() => GetInfoLaboral())
+        .catch(error => console.error('No se pudo eliminar el objeto', error));
 }
-function MostrarEditarLaboral(id){
+function MostrarEditarLaboral(id) {
     let item = itemsLaboral.find(item => item.idInfoLaboral === id);
     document.getElementById('IdLaboral').value = item.idInfoLaboral;
     document.getElementById('editInstitucion').value = item.institucion;
@@ -749,7 +896,7 @@ function MostrarEditarLaboral(id){
     document.getElementById('editFechaFin').value = item.fechaFin;
     document.getElementById('FormEditLaboral').hidden = false;
 }
-function EditarLaboral(){
+function EditarLaboral() {
     let uri = 'https://localhost:44351/api/InformacionLaboral';
     let Id = document.getElementById('IdLaboral').value;
     let inst = document.getElementById('editInstitucion').value;
@@ -766,23 +913,23 @@ function EditarLaboral(){
     fetch(`${uri}/${Id}`, {
         method: 'PUT',
         headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
     })
-    .then(() => GetInfoLaboral())
-    .catch(error => console.error('No se actualizo laboral ', error));
+        .then(() => GetInfoLaboral())
+        .catch(error => console.error('No se actualizo laboral ', error));
     CerrarFormLaboral();
     return false;
 }
-function CerrarFormLaboral(){
+function CerrarFormLaboral() {
     document.getElementById('FormEditLaboral').hidden = true;
 }
 
 let itemsContacto = [];
 
-function GuardarInfoContacto(){
+function GuardarInfoContacto() {
     const uri = 'https://localhost:44351/api/InfoContacto';
     let TCel = document.getElementById('TCelular').value;
     let TOfi = document.getElementById('TOficina').value;
@@ -810,12 +957,12 @@ function GuardarInfoContacto(){
         },
         body: JSON.stringify(item)
     }).then(response => response.json())
-    .then(() => {TCel=''; TOfi=''; TCasa=''; TExtra=''; Email=''; ZIP=''; TEme=''; NomEme='';})
-    .catch(error => console.error('No se pudo guardar', error));
+        .then(() => { TCel = ''; TOfi = ''; TCasa = ''; TExtra = ''; Email = ''; ZIP = ''; TEme = ''; NomEme = ''; })
+        .catch(error => console.error('No se pudo guardar', error));
 }
 
-function MostrarInfoContacto(data){
-    //document.getElementById('tableInfoContacto').hidden = false;
+function MostrarInfoContacto(data) {
+    document.getElementById('tablaInfoContacto').hidden = false;
     let body = document.getElementById('tableContacto');
     body.innerHTML = '';
     let boton = document.createElement('button');
@@ -865,15 +1012,64 @@ function MostrarInfoContacto(data){
     itemsContacto = data;
 }
 
-function GetInfoContacto(){
-    let uri = 'https://localhost:44351/api/InfoContacto';
-    fetch(uri)
-    .then(response => response.json())
-    .then(data => MostrarInfoContacto(data))
-    .catch(error => console.error('No se encontraron datos de contacto', error));
+function MostrarInfoContactoBusqueda(data) {
+    document.getElementById('tablaInfoContacto').hidden = false;
+    let body = document.getElementById('tableContacto');
+    body.innerHTML = '';
+    let boton = document.createElement('button');
+    document.getElementById('tituloContacto').innerHTML = 'Información Contacto';
+    let editarItem = boton.cloneNode(false);
+    editarItem.innerHTML = 'Editar';
+    editarItem.setAttribute('onclick', `MostrarEditarContacto(${data.idInfoContacto})`);
+
+    let tr = body.insertRow();
+
+    let td1 = tr.insertCell(0);
+    td1.appendChild(editarItem);
+
+    let td2 = tr.insertCell(1);
+    let cel = document.createTextNode(data.telefonoCelular);
+    td2.appendChild(cel);
+
+    let td3 = tr.insertCell(2);
+    let ofi = document.createTextNode(data.telefonoOficina);
+    td3.appendChild(ofi);
+
+    let td4 = tr.insertCell(3);
+    let casa = document.createTextNode(data.telefonoCasa);
+    td4.appendChild(casa);
+
+    let td5 = tr.insertCell(4);
+    let ext = document.createTextNode(data.telefonoExtra);
+    td5.appendChild(ext);
+
+    let td6 = tr.insertCell(5);
+    let email = document.createTextNode(data.email);
+    td6.appendChild(email);
+
+    let td7 = tr.insertCell(6);
+    let zip = document.createTextNode(data.zip);
+    td7.appendChild(zip);
+
+    let td8 = tr.insertCell(7);
+    let eme = document.createTextNode(data.contactoEmergencia);
+    td8.appendChild(eme);
+
+    let td9 = tr.insertCell(8);
+    let nomEme = document.createTextNode(data.contactoEmergenciaNombre);
+    td9.appendChild(nomEme);
+    itemsContacto = data;
 }
 
-function MostrarEditarContacto(id){
+function GetInfoContacto() {
+    let uri = 'https://localhost:44351/api/InfoContacto';
+    fetch(uri)
+        .then(response => response.json())
+        .then(data => MostrarInfoContacto(data))
+        .catch(error => console.error('No se encontraron datos de contacto', error));
+}
+
+function MostrarEditarContacto(id) {
     document.getElementById('EditarInfoContacto').hidden = false;
     let item = itemsContacto.find(i => i.idInfoContacto === id);
     document.getElementById('idContacto').value = item.idInfoContacto;
@@ -886,19 +1082,19 @@ function MostrarEditarContacto(id){
     document.getElementById('editTEmergencia').value = item.contactoEmergencia;
     document.getElementById('editNomEmergencia').value = item.contactoEmergenciaNombre;
 }
-function CerrarFormContacto(){
+function CerrarFormContacto() {
     document.getElementById('EditarInfoContacto').hidden = true;
 }
-function EliminarInfoContacto(id){
+function EliminarInfoContacto(id) {
     const uri = 'https://localhost:44351/api/InfoContacto';
     fetch(`${uri}/${id}`, {
         method: 'DELETE'
     })
-    .then(() => GetInfoContacto())
-    .catch(error => console.error('No se pudo eliminar la info contacto', error));
+        .then(() => GetInfoContacto())
+        .catch(error => console.error('No se pudo eliminar la info contacto', error));
 }
 
-function EditarContacto(){
+function EditarContacto() {
     let uri = 'https://localhost:44351/api/InfoContacto';
     let TCel = document.getElementById('editTCelular').value;
     let TOfi = document.getElementById('editTOficina').value;
@@ -925,41 +1121,31 @@ function EditarContacto(){
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }, 
+        },
         body: JSON.stringify(item)
     })
-    .then(() => GetInfoContacto())
-    .catch(error => console.error('No se pudo actualizar la informacion', error));
+        .then(() => GetInfoContacto())
+        .catch(error => console.error('No se pudo actualizar la informacion', error));
     CerrarFormContacto();
     return false;
 }
 
-function MeasuredBoy(){
+function MeasuredBoy() {
     GuardarInfoLaboral();
 }
-function MostrarResultado(){
+function MostrarResultado() {
     window.location = 'MostrarInfoAdmin.html';
 }
+
 function GetIdNewCliente(){
-    const uri ='https://localhost:44351/api/BusquedaCedula';
     let cedula = localStorage.getItem('CedulaNewCliente');
-    fetch(`${uri}/${cedula}`)
-    .then(response => response.json())
-    .then(data => {localStorage.setItem('IdCliente', data.id);})
-    .catch(error => console.error('No se pudo tomar el id', error));    
+    $.get("https://localhost:44351/api/BusquedaCedula/" + cedula, function (data){
+        localStorage.setItem("IdCliente", data.id);
+        console.log(data.id);
+    });
 }
-function SetIdNewCliente(){   
-    var IdNewClient = localStorage.getItem('IdCliente');
-    document.getElementById('IdNewCliente').value = IdNewClient;
-    var p = document.getElementById('IdNewCliente');
-    console.log(p.value);
-    //alert(IdNewClient);
-}
-function GetYSetId(){
-    GetIdNewCliente();
-    SetIdNewCliente();
-}
-function EliminarMasivo(id){
+
+function EliminarMasivo(id) {
     EliminarPersonal(id);
     EliminarDireccion(id);
     EliminarInfoFormal(id);
@@ -968,31 +1154,30 @@ function EliminarMasivo(id){
     EliminarLaboral(id);
     EliminarInfoContacto(id);
 }
-function BigGet(){
+function BigGet() {
     GetInfoFormal();
     GetInfoComp();
     GetInfoIdioma();
 }
 
-function BigGuardar(){
+function BigGuardar() {
     GuardarAcademicaIdioma();
     GuardarAcademicaComp();
-    GuardarAcademicaFormal();     
-    
+    GuardarAcademicaFormal();
+
 }
-function TraerInfo(){
+function TraerInfo() {
     GetInfoDireccion();
     GetInfoPersonal();
 }
-function BigBoy(){
+function BigBoy() {
     GuardarInfoDireccion();
     GuardarInfoPersonal();
-    GuardarInfoContacto(); 
-    
+    GuardarInfoContacto();
 }
-function NextPagePersonal(){
+function NextPagePersonal() {
     window.location = 'InsertarInfoAcademicaAdmin.html';
 }
-function NextPage(){
+function NextPage() {
     window.location = 'InsertarInfoLaboralAdmin.html';
 }
