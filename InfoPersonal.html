@@ -14,15 +14,33 @@
     integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
   <!--<link rel="stylesheet" href="./style/styleInfoPersonal.css">-->
 </head>
 <style>
-  body{
-      background: #e52d27;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        body{
+      background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.877),
+      #000000d5),
+    url(./img/fondo2.png);
+    background-attachment: fixed;
+    background-position: no repeat;
+    background-size: cover;
+    
 
-  }
+    }
+    .container-glass{
+        /* From https://css.glass */
+background: rgba(105, 105, 105, 0.22);
+border-radius: 16px !important;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.7px) !important;
+-webkit-backdrop-filter: blur(3.7px) !important;
+border: 1px solid rgba(105, 105, 105, 0.1) !important;
+    }
 </style>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -83,14 +101,14 @@
       </div>
     </div>
     <fieldset>
-      <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
+      <form class="container container-glass  w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch text-light animate__animated animate__zoomIn animate__slow"
         action="javascript:void(0);" method="post">
-        <h3 class="fw-bold text-center py-3 text-secondary">Información Principal</h3>
+        <h3 class="fw-bold text-center py-3 text-light">Información Principal</h3>
 
-        <h4 class="fw-light py-3 text-secondary">Información personal</h4>
+        <h4 class="fw-light py-3 text-light">Información personal</h4>
 
 
-
+      <div class="text-light">
 
         <div class="form-row row g-2">
           <div class="form-group col-md-3">
@@ -151,9 +169,11 @@
             <!--<label for="Contrasena">Contraseña:</label>
             <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="********">-->
           </div>
+        </div>
+        <hr>
 
 
-          <h4 class="fw-light py-3 text-secondary">Información bancaria</h4>
+          <h4 class="fw-light py-3 text-light">Información bancaria</h4>
         </div>
         <div class="form-group col-md-4">
           <label for="BancoEspecifico">Tipo de Banco:</label>
@@ -171,7 +191,8 @@
           <input type="text" class="form-control" id="CuentaBancaria" name="CuentaBancaria"
             placeholder="Número IBAN de cuenta bancaria" disabled>
         </div>
-        <h4 class="fw-light py-3 text-secondary">Información de residencia</h4>
+        <hr class="Bold">
+        <h4 class="fw-light py-3 text-light">Información de residencia</h4>
         <div class="form-group col-md-4">
           <label for="Provincia">Provincia:</label>
           <select id="Provincia" class="form-control" disabled>
@@ -198,8 +219,9 @@
           <textarea class="form-control" id="Direccion" rows="3" name="Direccion" disabled>
           </textarea>
         </div>
+        <hr>
 
-        <h4 class="fw-light py-3 text-secondary">Información Contacto</h4>
+        <h4 class="fw-light py-3 text-light">Información Contacto</h4>
         <div class="form-group col-md-3">
           <label for="TCelular">Teléfono Celular</label>
           <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="TCelular" class="form-control" disabled>
@@ -234,6 +256,8 @@
           <input type="text" name="NomEmergencia" id="NomEmergencia" class="form-control" disabled>
         </div>
         <input type="hidden" name="Contrasena" id="Contrasena">
+        <br>
+        <br>
         <div class="form-group">
           <button value="Siguiente" class="btn btn-success mb-3" onclick="GuardarBtn()">Guardar</button>
           <button value="Siguiente" class="btn btn-secondary mb-3" onclick="HabilitarEspacio()">Editar</button>

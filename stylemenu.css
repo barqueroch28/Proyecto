@@ -1,34 +1,13 @@
 :root{
     --width: 300px;
     --padding: 10px;
-    --bgcolor: rgb(52,52,52);
+    --bgcolor: rgb(182, 42, 42);
     --hovercolor: rgb(23,23,23);
     --width-collapsed: 50px;
 
 
 }
 
-body{
-    background-color: #032c55;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding: 0;
-    margin: 0;
-    margin-left: var(--width-collapsed);
-    /*background: url(./img/logomenu.png) no-repeat center;*/
-    background-attachment: fixed;
-
-    background-color: #e52d27;
-    background-color: -webkit-linear-gradient(to right, #b31217, #e52d27);
-    background-color: linear-gradient(to right, #b31217, #e52d27);
-
-    
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding: 0;
-    margin: 0;
-    margin-left: var(--width-collapsed);
-}
 
 .body-expanded {
     margin-left: var(--width);
