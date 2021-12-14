@@ -15,23 +15,14 @@
         integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<style>
-    table {
-        border: black 1px solid;
-    }
-</style>
-
-<body>
     <script src="js/Admin.js"></script>
     <script src="js/MainEngine.js"></script>
     <script>
-        GetInfoLaboral();
         GetInfoPersonal();
-        GetInfoDireccion();
-        BigGet();
-        GetInfoContacto();
     </script>
+</head>
+
+<body>
     <div class="main-container">
         <div id="sidemenu" class="menu-collapsed">
             <!--  HEADER -->
@@ -87,8 +78,41 @@
                 </div>
             </div>
         </div>
+    </div>
+    <fieldset>
+        <div class="container">
+            <h1 class="text-center text-secondary py-3 fw-normal">Buscar persona apartir de la cédula</h1>
+            <div class="container-fluid input-group w-25">
+                <input type="text" class="form-control col-md-10" id="BuscarPersonal">
+                <div class="input-group-append">
+                    <button class="btn btn-success" id="Buscar" type="button">Buscar</button>
+                    <a onclick="InhabilitarInformacionBusqueda()" id="CerrarBusqueda" hidden>&#10006;</a>
+                </div>
+            </div>
 
-        <fieldset>
+
+            <div class="container">
+                <h3 id="TituloPersonal2" class="text-center text-secondary py-3 fw-light"></h3>
+                <table id="TablaPInfo2" class="container table-sm table-bordered table-responsive align-items-stretch">
+                    <tr>
+                        <th colspan="2" scope="col">Acciones</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Primer Apellido</th>
+                        <th scope="col">Segundo Apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col"> Fecha de Nacimiento</th>
+                        <th scope="col">Estado Civil</th>
+                        <th scope="col">Numero de Asegurado</th>
+                        <th scope="col">Tipo de Sangre</th>
+                        <th scope="col">IBAN</th>
+                        <th scope="col">Banco Especifico</th>
+                        <th scope="col">Contraseña</th>
+                    </tr>
+                    <tbody id="TablaPersonal2"></tbody>
+                </table>
+            </div>
+
+
             <h3 id="TituloPersonal" class="text-center text-secondary py-3 fw-light"></h3>
             <table id="TablaPInfo" hidden
                 class="container table-sm table-bordered table-responsive align-items-stretch">
@@ -110,7 +134,7 @@
             </table>
             <div id="FormEditPersonal" hidden>
                 <h3 class="text-center text-secondary py-3 fw-light">Editar Información Personal</h3>
-                <form action="javascript:void(0);" onsubmit="EditarPersonal()"
+                <form action="javascript:void(0);" onsubmit="EditarPersonalBusqueda()"
                     class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
                     <div class="form-row row g-2">
                         <input type="hidden" id="IdInfoPersonal">
@@ -203,7 +227,7 @@
                 <tbody id="TablaDireccion"></tbody>
             </table>
             <div id="FormEditarDireccion" hidden>
-                <form action="javascript:void(0);" onsubmit="EditarDireccion()"
+                <form action="javascript:void(0);" onsubmit="EditarDireccionBusqueda()"
                     class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
                     <h3 class="text-center text-secondary py-3 fw-light">Editar Información Dirección</h3>
                     <div class="form-row row g-2">
@@ -234,23 +258,126 @@
                     </div>
                 </form>
             </div>
+            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch"
+                hidden>
+                <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
+                <tr>
+                    <th>Acciones</th>
+                    <th>Teléfono Celular</th>
+                    <th>Teléfono Oficina</th>
+                    <th>Teléfeno Casa</th>
+                    <th>Teléfono Extra</th>
+                    <th>Email</th>
+                    <th>ZIP</th>
+                    <th>Contacto de Emergencia</th>
+                    <th>Nombre del Contacto</th>
+                </tr>
+                <tbody id="tableContacto"></tbody>
+            </table>
+            <div id="EditarInfoContacto" hidden>
+                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Contacto</h3>
+                <form action="javascript:void(0);" onsubmit="EditarContactoBusqueda()"
+                    class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+                    <input type="hidden" name="id" id="idContacto">
+                    <div class="form-group col-md-3">
+                        <label for="TCelular">Teléfono Celular</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="editTCelular"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="TOficina">Teléfono Oficina</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TOficina" id="editTOficina"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="TCasa">Teléfono Casa</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCasa" id="editTCasa" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="TExtra">Teléfono Extra</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TExtra" id="editTExtra"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="Email">Email</label>
+                        <input type="email" name="Email" id="editEmail" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="ZIP">Codigo Postal</label>
+                        <input type="text" name="ZIP" id="editZIP" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="TEmergencia">Telefono de Emergencia</label>
+                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TEmergencia" id="editTEmergencia"
+                            class="form-control">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="NomEmergencia">Nombre del contacto</label>
+                        <input type="text" name="NomEmergencia" id="editNomEmergencia" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a onclick="CerrarFormContacto()">&#10006;</a>
+                    </div>
+                </form>
+            </div>
+
+
+            <table id="tablaInfoLaboral" class="container table-sm table-bordered table-responsive align-items-stretch"
+                hidden>
+                <h3 id="tituloLaboral" class="text-center text-secondary py-3 fw-light"></h3>
+                <tr>
+                    <th colspan="2" scope="col">Acciones</th>
+                    <th>Institucion</th>
+                    <th>Fecha de Inició</th>
+                    <th>Fecha en la que Finalizó</th>
+                </tr>
+                <tbody id="tableLaboral"></tbody>
+            </table>
+            <div id="FormEditLaboral" hidden>
+                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Laboral</h3>
+                <form action="javascript:void(0);" onsubmit="EditarLaboralBusqueda()"
+                    class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+                    <div class="form-row row g-2">
+                        <input type="hidden" id="IdLaboral">
+                        <input type="hidden" id="IdPersonaLaboral">
+                        <div class="form-group col-md-3">
+                            <label>Institucion</label>
+                            <input type="text" placeholder="Institución" id="editInstitucion" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha en la que Inició</label>
+                            <input type="date" id="editFechaInicio" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha en la que Finalizó</label>
+                            <input type="date" id="editFechaFin" class="form-control">
+                        </div>
+                        <hr>
+                        <div class="form-group col-md-3">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a onclick="CerrarFormLaboral()">&#10006;</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
 
             <h3 id="tituloFormal" class="text-center text-secondary py-3 fw-light"></h3>
             <table id="tablaInfoFormal" hidden
                 class="container table-sm table-bordered table-responsive align-items-stretch">
                 <tr>
-                    <th>Acciones</th>
+                    <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
                     <th>Acreditacion</th>
                     <th>Fecha de Graduación</th>
                 </tr>
                 <tbody id="InfoFormal"></tbody>
             </table>
-
             <div id="EditInfoFormal" hidden>
                 <hr>
                 <h3 class="fw-light text-center py-3 text-secondary">Editar Información Academica Formal</h3>
-                <form action="javascript:void(0);" onsubmit="EditarInfoFormal()"
+                <form action="javascript:void(0);" onsubmit="EditarInfoFormalBusqueda()"
                     class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
                     <input type="hidden" id="idInfoFormal">
                     <input type="hidden" id="idPersonaFormal">
@@ -280,179 +407,139 @@
             <table class="container table-sm table-bordered table-responsive align-items-stretch" id="tablaInfoComp"
                 hidden>
                 <tr>
-                    <th>Acciones</th>
+                    <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
                     <th>Acreditacion</th>
                     <th>Fecha de Graduación</th>
                 </tr>
                 <tbody id="InfoComp"></tbody>
             </table>
+        </div>
+        <div id="EditInfoComp" hidden>
+            <hr>
+            <h3 class="fw-light text-center py-3 text-secondary">Editar Información Academica Complementaria</h3>
+            <form action="javascript:void(0);" onsubmit="EditarInfoCompBusqueda()"
+                class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+                <div class="form-row row g-2">
 
-            <div id="EditInfoComp" hidden>
-                <hr>
-                <h3 class="fw-light text-center py-3 text-secondary">Editar Información Academica Complementaria</h3>
-                <form action="javascript:void(0);" onsubmit="EditarInfoComp()"
-                    class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
-                    <div class="form-row row g-2">
-                        
-                        <input type="hidden" id="idInfoComp">
-                        <input type="hidden" id="idPersonaComp">
-                        <div class="form-group col-md-3">
-                            <label>Institución</label>
-                            <input type="text" placeholder="Institucion" id="EditInstC" class="form-control">
-                        </div><br>
-                        <div class="form-group col-md-3">
-                            <label>Acreditacion</label>
-                            <input type="text" placeholder="Acreditacion" id="EditAcrC" class="form-control">
-                        </div><br>
-                        <div class="form-group col-md-3">
-                            <label>Fecha de Graduación</label>
-                            <input type="date" id="EditFinC" class="form-control"><br>
-                        </div>
-                        <hr>
-                        <div class="form-group col-md-3">
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                            <a onclick="CerrarFormComp()">&#10006;</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <h3 id="tituloIdioma" class="text-center text-secondary py-3 fw-light"></h3>
-            <table id="TablaIdioma" class="container table-sm table-bordered table-responsive align-items-stretch"
-                hidden>
-                <tr>
-                    <th>Acciones</th>
-                    <th>Idioma</th>
-                    <th>Nivel</th>
-                </tr>
-                <tbody id="InfoIdioma"></tbody>
-            </table>
-
-            <div id="EditarInfoIdioma" hidden>
-                <h3 class="fw-light text-center py-3 text-secondary">Editar Información Academica Idioma</h3>
-                <form action="javascript:void(0);" onsubmit="EditarInfoIdioma()"
-                    class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">                   
-                    <input type="hidden" id="IdInfoIdioma">
-                    <input type="hidden" id="IdPersonaIdioma">
-                    <div class="form-row row g-2">
-                        <div class="form-group col-md-3">
-                            <label>Idioma</label>
-                            <input type="text" id="EditIdioma" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Nivel</label>
-                            <input type="text" id="EditNivel" class="form-control">
-                        </div>
-                        <hr>
-                        <div class="form-group col-md-3">
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                            <a onclick="CerrarFormIdioma()">&#10006;</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <table id="tablaInfoLaboral" class="container table-sm table-bordered table-responsive align-items-stretch"
-                hidden>
-                <h3 id="tituloLaboral" class="text-center text-secondary py-3 fw-light"></h3>
-                <tr>
-                    <th colspan="2">Acciones</th>
-                    <th>Institucion</th>
-                    <th>Fecha de Inició</th>
-                    <th>Fecha en la que Finalizó</th>
-                </tr>
-                <tbody id="tableLaboral"></tbody>
-            </table>
-            <div id="FormEditLaboral" hidden>
-                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Laboral</h3>
-                <form action="javascript:void(0);" onsubmit="EditarLaboral()"
-                    class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
-                    <div class="form-row row g-2">
-                        <input type="hidden" id="IdLaboral">
-                        <input type="hidden" id="IdPersonaLaboral">
-                        <div class="form-group col-md-3">
-                            <label>Institucion</label>
-                            <input type="text" placeholder="Institución" id="editInstitucion" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Fecha en la que Inició</label>
-                            <input type="date" id="editFechaInicio" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Fecha en la que Finalizó</label>
-                            <input type="date" id="editFechaFin" class="form-control">
-                        </div>
-                        <hr>
-                        <div class="form-group col-md-3">
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                            <a onclick="CerrarFormLaboral()">&#10006;</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch" hidden>
-                <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
-                <tr>
-                    <th>Acciones</th>
-                    <th>Teléfono Celular</th>
-                    <th>Teléfono Oficina</th>
-                    <th>Teléfeno Casa</th>
-                    <th>Teléfono Extra</th>
-                    <th>Email</th>
-                    <th>ZIP</th>
-                    <th>Contacto de Emergencia</th>
-                    <th>Nombre del Contacto</th>
-                </tr>
-                <tbody id="tableContacto"></tbody>
-            </table>
-            <div id="EditarInfoContacto" hidden>
-                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Contacto</h3>
-                <form action="javascript:void(0);" onsubmit="EditarContacto()"
-                 class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
-                 <input type="hidden" name="id" id="idContacto">
+                    <input type="hidden" id="idInfoComp">
+                    <input type="hidden" id="idPersonaComp">
                     <div class="form-group col-md-3">
-                        <label for="TCelular">Teléfono Celular</label>
-                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCelular" id="editTCelular" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="TOficina">Teléfono Oficina</label>
-                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TOficina" id="editTOficina" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="TCasa">Teléfono Casa</label>
-                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TCasa" id="editTCasa" class="form-control"> 
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="TExtra">Teléfono Extra</label>
-                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TExtra" id="editTExtra" class="form-control">
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="Email">Email</label>
-                        <input type="email" name="Email" id="editEmail" class="form-control">
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="ZIP">Codigo Postal</label>
-                        <input type="text" name="ZIP" id="editZIP" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="TEmergencia">Telefono de Emergencia</label>
-                        <input type="tel" pattern="[0-9]{4}-[0-9]{4}" name="TEmergencia" id="editTEmergencia" class="form-control">
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="NomEmergencia">Nombre del contacto</label>
-                        <input type="text" name="NomEmergencia" id="editNomEmergencia" class="form-control">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                        <a onclick="CerrarFormContacto()">&#10006;</a>
+                        <label>Institución</label>
+                        <input type="text" placeholder="Institucion" id="EditInstC" class="form-control">
+                    </div><br>
+                    <div class="form-group col-md-3">
+                        <label>Acreditacion</label>
+                        <input type="text" placeholder="Acreditacion" id="EditAcrC" class="form-control">
+                    </div><br>
+                    <div class="form-group col-md-3">
+                        <label>Fecha de Graduación</label>
+                        <input type="date" id="EditFinC" class="form-control"><br>
                     </div>
-                </form>
-            </div>
-        </fieldset>
-    </div>
+                    <hr>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a onclick="CerrarFormComp()">&#10006;</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <h3 id="tituloIdioma" class="text-center text-secondary py-3 fw-light"></h3>
+        <table id="TablaIdioma" class="container table-sm table-bordered table-responsive align-items-stretch" hidden>
+            <tr>
+                <th colspan="2" scope="col">Acciones</th>
+                <th>Idioma</th>
+                <th>Nivel</th>
+            </tr>
+            <tbody id="InfoIdioma"></tbody>
+        </table>
+
+        <div id="EditarInfoIdioma" hidden>
+            <h3 class="fw-light text-center py-3 text-secondary">Editar Información Academica Idioma</h3>
+            <form action="javascript:void(0);" onsubmit="EditarInfoIdiomaBusqueda()"
+                class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
+
+                <input type="hidden" id="IdInfoIdioma">
+                <input type="hidden" id="IdPersonaIdioma">
+                <div class="form-row row g-2">
+                    <div class="form-group col-md-3">
+                        <label>Idioma</label>
+                        <input type="text" id="EditIdioma" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Nivel</label>
+                        <input type="text" id="EditNivel" class="form-control">
+                    </div>
+                    <hr>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a onclick="CerrarFormIdioma()">&#10006;</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </fieldset>
     <input type="text" id="IdPersona" disabled hidden>
     <input type="text" id="IdNewCliente" disabled hidden>
+    <input type="text" id="IdResultado" disabled hidden>
+    <script>
+        $(document).ready(function () {
+            $("#Buscar").click(function () {
+                $("#TablaPersonal2").prop("hidden", true);
+                $("#TituloPersonal2").prop("hidden", true);
+                $("#TablaPInfo2").prop("hidden", true);
+
+                $("#CerrarBusqueda").prop("hidden", false);
+                $("#TituloPersonal").prop("hidden", false);
+                $("#TablaPInfo").prop("hidden", false);
+                $("#TablaPersonal").prop("hidden", false);
+                $("#TituloDireccion").prop("hidden", false);
+                $("#TablaPDire").prop("hidden", false);
+                $("#TablaDireccion").prop("hidden", false);
+                $("#tablaInfoContacto").prop("hidden", false);
+                $("#tituloContacto").prop("hidden", false);
+                $("#tableContacto").prop("hidden", false);
+                $("#tablaInfoLaboral").prop("hidden", false);
+                $("#tituloLaboral").prop("hidden", false);
+                $("#tableLaboral").prop("hidden", false);
+                $("#tituloFormal").prop("hidden", false);
+                $("#tablaInfoFormal").prop("hidden", false);
+                $("#InfoFormal").prop("hidden", false);
+                $("#tituloComp").prop("hidden", false);
+                $("#tablaInfoComp").prop("hidden", false);
+                $("#InfoComp").prop("hidden", false);
+                $("#tituloIdioma").prop("hidden", false);
+                $("#TablaIdioma").prop("hidden", false);
+                $("#InfoIdioma").prop("hidden", false);
+                var busqueda = $("#BuscarPersonal").val();
+                $.get("https://localhost:44351/api/BusquedaCedula/" + busqueda, function (persona) {
+                    MostrarInfoPersonalBusqueda(persona);
+                    $.get("https://localhost:44351/api/InfoDireccion/" + persona.id, function (direccion) {
+                        MostrarInfoDireccionBusqueda(direccion);
+                        localStorage.setItem("IdEditCliente", persona.id);
+                        $.get("https://localhost:44351/api/InfoContacto/" + persona.id, function (contacto) {
+                            MostrarInfoContactoBusqueda(contacto);
+                            $.get("https://localhost:44351/api/BusquedaFormal/" + persona.id, function (formal) {
+                                MostrarInfoAcademicaFormal(formal);
+                                $.get("https://localhost:44351/api/BuscarComp/" + persona.id, function (comp) {
+                                    MostrarInfoAcademicaComplementaria(comp);
+                                    $.get("https://localhost:44351/api/BuscarIdioma/" + persona.id, function (idioma) {
+                                        MostrarInfoAcademicaIdioma(idioma);
+                                        $.get("https://localhost:44351/api/BuscarLaboral/" + persona.id, function (laboral) {
+                                            MostrarInfoLaboral(laboral);
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    </script>
     <script>
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
@@ -465,7 +552,7 @@
             console.log(p);
             document.querySelector('body').classList.toggle('body-expanded');
         });
-        $(document).ready(function(){
+        $(document).ready(function () {
             GetIdNewCliente();
         });
     </script>

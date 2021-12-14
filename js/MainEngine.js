@@ -185,7 +185,7 @@ function MostarInfoLaboralCliente(data){
   data.forEach(item => {
     let btnEditar = boton.cloneNode(false);
     btnEditar.innerHTML = 'Eliminar';
-    btnEditar.setAttribute('onclick', `EliminarLaboral(${item.idInfoLaboral})`);
+    btnEditar.setAttribute('onclick', `EliminarLaboralCliente(${item.idInfoLaboral})`);
 
     let tr = body.insertRow();
 
@@ -594,7 +594,7 @@ function GuardarLaboral(){
   DeshabilitarLaboral(); 
 }
 
-function EliminarLaboral(id){
+function EliminarLaboralCliente(id){
   const uri = 'https://localhost:44351/api/InformacionLaboral';
   fetch(`${uri}/${id}`, {
     method: 'DELETE'
