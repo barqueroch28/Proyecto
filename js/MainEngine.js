@@ -21,7 +21,7 @@ function Login(){
         if(admin == false){
         window.location = 'menu.html';
         } else{
-          window.location = 'MostrarInfoAdmin.html';
+          window.location = 'BuscarPersonalAdmin.html';
         }
       } else{
         alert('No se pueden dejar campos vacíos', 'Error');
