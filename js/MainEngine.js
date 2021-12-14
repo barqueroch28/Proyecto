@@ -111,6 +111,41 @@ function MInfoDireccion(data){
   document.getElementById('Distrito').value = data.distrito;
   document.getElementById('Direccion').value = data.direccionExacta;
 }
+
+function EditarContactoCliente(id){
+  let uri = 'https://localhost:44351/api/InfoContacto';
+    let TCel = document.getElementById('TCelular').value;
+    let TOfi = document.getElementById('TOficina').value;
+    let TCasa = document.getElementById('TCasa').value;
+    let TExtra = document.getElementById('TExtra').value;
+    let Email = document.getElementById('Email').value;
+    let ZIP = document.getElementById('ZIP').value;
+    let TEme = document.getElementById('TEmergencia').value;
+    let NomEme = document.getElementById('NomEmergencia').value;
+    let item = {
+        idInfoContacto: id,
+        telefonoCelular: TCel,
+        telefonoOficina: TOfi,
+        telefonoCasa: TCasa,
+        telefonoExtra: TExtra,
+        email: Email,
+        zip: ZIP,
+        contactoEmergencia: TEme,
+        contactoEmergenciaNombre: NomEme
+    }
+    fetch(`${uri}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    })
+        .then(() => FillInfoContacto())
+        .catch(error => console.error('No se pudo actualizar la informacion', error));
+    return false;
+}
+
 function FillInfoContacto(){
   const uri = 'https://localhost:44351/api/InfoContacto';
   let id = localStorage.getItem('Id');
@@ -384,10 +419,19 @@ function HabilitarEspacio(){
   document.getElementById('Canton').disabled = false;
   document.getElementById('Distrito').disabled = false;
   document.getElementById('Direccion').disabled = false;
+  document.getElementById('TCelular').disabled = false;
+  document.getElementById('TOficina').disabled = false;
+  document.getElementById('TCasa').disabled = false;
+  document.getElementById('TExtra').disabled = false;
+  document.getElementById('Email').disabled = false;
+  document.getElementById('ZIP').disabled = false;
+  document.getElementById('TEmergencia').disabled = false;
+  document.getElementById('NomEmergencia').disabled = false;
   document.getElementById('Cerrar').hidden = false;
 }
 
 function DeshabilitarEspacio(){
+  document.getElementById('Cerrar').hidden = true;
   document.getElementById('EstadoCivil').disabled = true;
   document.getElementById('BancoEspecifico').disabled = true;
   document.getElementById('CuentaBancaria').disabled = true;
@@ -395,7 +439,15 @@ function DeshabilitarEspacio(){
   document.getElementById('Canton').disabled = true;
   document.getElementById('Distrito').disabled = true;
   document.getElementById('Direccion').disabled = true;
-  document.getElementById('Cerrar').hidden = true;
+  document.getElementById('TCelular').disabled = true;
+  document.getElementById('TOficina').disabled = true;
+  document.getElementById('TCasa').disabled = true;
+  document.getElementById('TExtra').disabled = true;
+  document.getElementById('Email').disabled = true;
+  document.getElementById('ZIP').disabled = true;
+  document.getElementById('TEmergencia').disabled = true;
+  document.getElementById('NomEmergencia').disabled = true;
+  
   
 }
 
@@ -550,6 +602,7 @@ function GuardarBtn(){
   let id = localStorage.getItem('Id');
   EditarPersonalCliente(id);
   EditarDireccionCliente(id);
+  EditarContactoCliente(id);
 }
 
 function HabilitarLaboral(){
