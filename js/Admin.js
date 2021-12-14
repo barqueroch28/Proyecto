@@ -998,7 +998,7 @@ function GetInfoIdiomaBusqueda() {
                         `<button onclick='MostrarEditarInfoIdioma(${item.id})'>Editar</button>` +
                         "</td>" +
                         "<td>" +
-                        `<button onclick='EliminarIdiomaBusqueda(${item.id})'>Editar</button>` +
+                        `<button onclick='EliminarIdiomaBusqueda(${item.id})'>Eliminar</button>` +
                         "</td>" +
                         "<td>" + item.idioma + "</td>" +
                         "<td>" + item.nivel + "</td>" +
