@@ -1,8 +1,8 @@
 :root{
     --width: 300px;
     --padding: 10px;
-    --bgcolor: rgb(182, 42, 42);
-    --hovercolor: rgb(23,23,23);
+    --bgcolor: #212529;
+    --hovercolor: rgb(17, 17, 17);
     --width-collapsed: 50px;
 
 
@@ -67,6 +67,7 @@
 
 #sidemenu #header #menu-btn:hover{
     background-color: var(--hovercolor);
+    
 
 }
 #sidemenu #header #menu-btn .btn-hamburger{
@@ -139,12 +140,17 @@
 
 #sidemenu #menu-items .item a:hover{
     background-color: var(--hovercolor);
+    box-shadow: 5px 10px 20px 1px #b4b4b446 !important;
+    transition: all 0.3s linear;
+    transform: scale(1.1) !important;
+
 }
 
 #sidemenu #menu-items .item .icon {
     box-sizing: border-box;
     padding: var(--padding);
     width: var(--width-collapsed);
+    transition: all 0.3s ease-in-out;
 
 }
 
@@ -217,3 +223,4 @@
 #Buscar{
     margin: 5px;
 }
+
