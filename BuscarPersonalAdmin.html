@@ -20,6 +20,22 @@
     <script>
         GetInfoPersonal();
     </script>
+    <style>
+        table {
+            border: black 1px solid;
+        }
+        body{
+          background-image: 
+          linear-gradient(rgba(0, 0, 0, 0.877),
+          #000000d5),
+        url(./img/fondo2.png);
+        background-attachment: fixed;
+        background-position: no repeat;
+        background-size: cover;
+        
+    
+        }
+    </style>
 </head>
 
 <body>
@@ -53,12 +69,7 @@
                 <div class="item separator">
 
                 </div>
-                <div class="item">
-                    <a href="./MostrarInfoAdmin.html">
-                        <div class="icon"><img src="./img/education.png" alt=""></div>
-                        <div class="title"><span>Mostrar y Editar Personal</span></div>
-                    </a>
-                </div>
+              
                 <div class="item separator">
 
                 </div>
@@ -85,7 +96,7 @@
             <div class="container-fluid input-group w-25">
                 <input type="text" class="form-control col-md-10" id="BuscarPersonal">
                 <div class="input-group-append">
-                    <button class="btn btn-success" id="Buscar" type="button">Buscar</button>
+                    <button class="btn btn-light" id="Buscar" type="button">Buscar</button>
                     <a onclick="InhabilitarInformacionBusqueda()" id="CerrarBusqueda" hidden>&#10006;</a>
                 </div>
             </div>
@@ -93,7 +104,7 @@
 
             <div class="container">
                 <h3 id="TituloPersonal2" class="text-center text-secondary py-3 fw-light"></h3>
-                <table id="TablaPInfo2" class="container table-sm table-bordered table-responsive align-items-stretch">
+                <table id="TablaPInfo2" class="container table-sm table-bordered table-responsive align-items-stretch" style="color: white; border: rgb(122, 104, 104);">
                     <tr>
                         <th colspan="2" scope="col">Acciones</th>
                         <th scope="col">Nombre</th>
@@ -115,7 +126,7 @@
 
             <h3 id="TituloPersonal" class="text-center text-secondary py-3 fw-light"></h3>
             <table id="TablaPInfo" hidden
-                class="container table-sm table-bordered table-responsive align-items-stretch">
+                class="container table-sm table-bordered table-responsive align-items-stretch" style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
                     <th scope="col">Nombre</th>
@@ -216,7 +227,7 @@
             </div>
             <h3 id="TituloDireccion" class="text-center text-secondary py-3 fw-light"></h3>
             <table id="TablaPDire" hidden
-                class="container table-sm table-bordered table-responsive align-items-stretch">
+                class="container table-sm table-bordered table-responsive align-items-stretch" style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th>Acciones</th>
                     <th>Provincia</th>
@@ -259,7 +270,7 @@
                 </form>
             </div>
             <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch"
-                hidden>
+            style="color: white; border: rgb(122, 104, 104);" hidden>
                 <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
                 <tr>
                     <th>Acciones</th>
@@ -324,7 +335,7 @@
 
 
             <table id="tablaInfoLaboral" class="container table-sm table-bordered table-responsive align-items-stretch"
-                hidden>
+            style="color: white; border: rgb(122, 104, 104);" hidden>
                 <h3 id="tituloLaboral" class="text-center text-secondary py-3 fw-light"></h3>
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
@@ -364,7 +375,7 @@
 
 
             <h3 id="tituloFormal" class="text-center text-secondary py-3 fw-light"></h3>
-            <table id="tablaInfoFormal" hidden
+            <table id="tablaInfoFormal" hidden style="color: white; border: rgb(122, 104, 104);"
                 class="container table-sm table-bordered table-responsive align-items-stretch">
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
@@ -405,7 +416,7 @@
 
             <h3 id="tituloComp" class="text-center text-secondary py-3 fw-light"></h3>
             <table class="container table-sm table-bordered table-responsive align-items-stretch" id="tablaInfoComp"
-                hidden>
+                hidden style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
@@ -446,7 +457,7 @@
         </div>
 
         <h3 id="tituloIdioma" class="text-center text-secondary py-3 fw-light"></h3>
-        <table id="TablaIdioma" class="container table-sm table-bordered table-responsive align-items-stretch" hidden>
+        <table id="TablaIdioma" class="container table-sm table-bordered table-responsive align-items-stretch" hidden style="color: white; border: rgb(122, 104, 104);">
             <tr>
                 <th colspan="2" scope="col">Acciones</th>
                 <th>Idioma</th>

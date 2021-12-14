@@ -1554,7 +1554,7 @@ function MeasuredBoy() {
     GuardarInfoLaboral();
 }
 function MostrarResultado() {
-    window.location = 'MostrarInfoAdmin.html';
+    window.location = 'BuscarPersonalAdmin.html';
 }
 
 function GetIdNewCliente() {

@@ -43,8 +43,8 @@ function FillInfoPersonal(){
 }
 function MInfoPersonal(data){
   var date = new Date(data.fechaNacimiento);
-  var mes = (parseInt(date.getMonth()+1) > 10 ? parseInt(date.getMonth()+1) : '0'+ parseInt(date.getMonth()+1));
-  var dia = (parseInt(date.getDate()) > 10 ? date.getDate() : '0'+ date.getDate());
+  var mes = (parseInt(date.getMonth()+1) >= 10 ? parseInt(date.getMonth()+1) : '0'+ parseInt(date.getMonth()+1));
+  var dia = (parseInt(date.getDate()) >= 10 ? date.getDate() : '0'+ date.getDate());
   var definitivo = date.getFullYear() + '-' + mes + '-' + dia;
   document.getElementById('Nombre').value = data.nombre;
   document.getElementById('1Apellido').value = data.primerApellido;
