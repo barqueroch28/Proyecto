@@ -14,13 +14,31 @@
         integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <style>
-    body{
-        background: #e52d27;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        body{
+      background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.877),
+      #000000d5),
+    url(./img/fondo2.png);
+    background-attachment: fixed;
+    background-position: no repeat;
+    background-size: cover;
+    
 
+    }
+    #container-glass{
+        /* From https://css.glass */
+background: rgba(105, 105, 105, 0.22);
+border-radius: 16px !important;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.7px) !important;
+-webkit-backdrop-filter: blur(3.7px) !important;
+border: 1px solid rgba(105, 105, 105, 0.1) !important;
     }
 </style>
 <body>
@@ -81,10 +99,10 @@
             </div>
         </div>
         <fieldset>
-            <form class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch"
+            <form id="container-glass" class="container  w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch text-light animate__animated animate__zoomIn animate__slow"
                 action="javascript:void(0);" method="POST">
-                <h3 class="fw-bold text-center py-3 text-secondary">Información Laboral</h3>
-                <h4 class="fw-light py-3 text-secondary">Información laboral</h4>
+                <h3 class="fw-bold text-center py-3">Información Laboral</h3>
+                <h4 class="fw-light py-3">Información laboral</h4>
                 <div class="form-row row g-2" id="FormLaboral" hidden>
                     <div class="form-group col-md-3">
                         <label for="Institucion">Institucion:</label>
