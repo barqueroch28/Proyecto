@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/Admin.js"></script>
     <script src="js/MainEngine.js"></script>
@@ -104,8 +105,9 @@
 
 
             <div class="container">
-                <h3 id="TituloPersonal2" class="text-center text-secondary py-3 fw-light"></h3>
-                <table id="TablaPInfo2" class="container table-sm table-bordered table-responsive align-items-stretch"
+                <h3 id="TituloPersonal2" class="text-center text-light py-3 fw-light"></h3>
+                <table id="TablaPInfo2"
+                    class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch"
                     style="color: white; border: rgb(122, 104, 104);">
                     <tr>
                         <th colspan="2" scope="col">Acciones</th>
@@ -126,8 +128,10 @@
             </div>
 
 
-            <h3 id="TituloPersonal" class="text-center text-secondary py-3 fw-light"></h3>
-            <table id="TablaPInfo" hidden class="container table-sm table-bordered table-responsive align-items-stretch"
+            <h3 id="TituloPersonal"
+                class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
+            <table id="TablaPInfo" hidden
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
                 style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
@@ -146,7 +150,7 @@
                 <tbody id="TablaPersonal"></tbody>
             </table>
             <div id="FormEditPersonal" hidden>
-                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Personal</h3>
+                <h3 class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow">Editar Información Personal</h3>
                 <form action="javascript:void(0);" onsubmit="EditarPersonalBusqueda()"
                     class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
                     <div class="form-row row g-2">
@@ -227,8 +231,9 @@
                     </div>
                 </form>
             </div>
-            <h3 id="TituloDireccion" class="text-center text-secondary py-3 fw-light"></h3>
-            <table id="TablaPDire" hidden class="container table-sm table-bordered table-responsive align-items-stretch"
+            <h3 id="TituloDireccion" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
+            <table id="TablaPDire" hidden
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
                 style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th>Acciones</th>
@@ -271,9 +276,10 @@
                     </div>
                 </form>
             </div>
-            <table id="tablaInfoContacto" class="container table-sm table-bordered table-responsive align-items-stretch"
+            <table id="tablaInfoContacto"
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
                 style="color: white; border: rgb(122, 104, 104);" hidden>
-                <h3 id="tituloContacto" class="text-center text-secondary py-3 fw-light"></h3>
+                <h3 id="tituloContacto" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
                 <tr>
                     <th>Acciones</th>
                     <th>Teléfono Celular</th>
@@ -288,7 +294,7 @@
                 <tbody id="tableContacto"></tbody>
             </table>
             <div id="EditarInfoContacto" hidden>
-                <h3 class="text-center text-secondary py-3 fw-light">Editar Información Contacto</h3>
+                <h3 class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow">Editar Información Contacto</h3>
                 <form action="javascript:void(0);" onsubmit="EditarContactoBusqueda()"
                     class="container bg-white w-100 mt-4 ml-4 p-5 rounded-3 shadow align-items-stretch">
                     <input type="hidden" name="id" id="idContacto">
@@ -336,9 +342,10 @@
             </div>
 
 
-            <table id="tablaInfoLaboral" class="container table-sm table-bordered table-responsive align-items-stretch"
+            <table id="tablaInfoLaboral"
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
                 style="color: white; border: rgb(122, 104, 104);" hidden>
-                <h3 id="tituloLaboral" class="text-center text-secondary py-3 fw-light"></h3>
+                <h3 id="tituloLaboral" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
@@ -376,9 +383,10 @@
             </div>
 
 
-            <h3 id="tituloFormal" class="text-center text-secondary py-3 fw-light"></h3>
-            <table id="tablaInfoFormal"  style="color: white; border: rgb(122, 104, 104);"
-                class="container table-sm table-dark table-bordered table-responsive align-items-stretch">
+            <h3 id="tituloFormal" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
+            <table id="tablaInfoFormal" style="color: white; border: rgb(122, 104, 104);"
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
+                hidden>
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
@@ -416,9 +424,10 @@
                 </form>
             </div>
 
-            <h3 id="tituloComp" class="text-center text-secondary py-3 fw-light"></h3>
-            <table class="container table-sm table-bordered table-responsive align-items-stretch" id="tablaInfoComp"
-                hidden style="color: white; border: rgb(122, 104, 104);">
+            <h3 id="tituloComp" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
+            <table
+                class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
+                id="tablaInfoComp" hidden style="color: white; border: rgb(122, 104, 104);">
                 <tr>
                     <th colspan="2" scope="col">Acciones</th>
                     <th>Institucion</th>
@@ -458,9 +467,10 @@
             </form>
         </div>
 
-        <h3 id="tituloIdioma" class="text-center text-secondary py-3 fw-light"></h3>
-        <table id="TablaIdioma" class="container table-sm table-bordered table-responsive align-items-stretch" hidden
-            style="color: white; border: rgb(122, 104, 104);">
+        <h3 id="tituloIdioma" class="text-center text-light py-3 fw-light animate__animated animate__zoomInDown animate__slow"></h3>
+        <table id="TablaIdioma"
+            class="table table-hover table-dark container table-sm table-dark table-responsive align-items-stretch animate__animated animate__zoomInDown animate__slow"
+            hidden style="color: white; border: rgb(122, 104, 104);">
             <tr>
                 <th colspan="2" scope="col">Acciones</th>
                 <th>Idioma</th>
